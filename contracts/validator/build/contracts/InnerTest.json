@@ -1,0 +1,834 @@
+{
+  "contractName": "InnerTest",
+  "abi": [
+    {
+      "constant": false,
+      "inputs": [],
+      "name": "changeValidators",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [],
+      "name": "finalizeChange",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "outerSet",
+      "outputs": [
+        {
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "getValidators",
+      "outputs": [
+        {
+          "name": "",
+          "type": "address[]"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "validator",
+          "type": "address"
+        },
+        {
+          "name": "blockNumber",
+          "type": "uint256"
+        },
+        {
+          "name": "proof",
+          "type": "bytes"
+        }
+      ],
+      "name": "reportMalicious",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "validator",
+          "type": "address"
+        },
+        {
+          "name": "blockNumber",
+          "type": "uint256"
+        }
+      ],
+      "name": "reportBenign",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "name": "_outer",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "name": "current_set",
+          "type": "address[]"
+        }
+      ],
+      "name": "ChangeFinalized",
+      "type": "event"
+    }
+  ],
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "//! Copyright 2017 Peter Czaban, Parity Technologies Ltd.\n//!\n//! Licensed under the Apache License, Version 2.0 (the \"License\");\n//! you may not use this file except in compliance with the License.\n//! You may obtain a copy of the License at\n//!\n//!     http://www.apache.org/licenses/LICENSE-2.0\n//!\n//! Unless required by applicable law or agreed to in writing, software\n//! distributed under the License is distributed on an \"AS IS\" BASIS,\n//! WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n//! See the License for the specific language governing permissions and\n//! limitations under the License.\n\npragma solidity ^0.4.15;\n\nimport \"./interfaces/RelaySet.sol\";\n\ncontract InnerTest is InnerSet {\n\tevent ChangeFinalized(address[] current_set);\n\n\tfunction InnerTest(address _outer) public {\n\t\touterSet = OuterSet(_outer);\n\t}\n\n\taddress[] dummy;\n\n\tfunction getValidators() public constant returns (address[]) {\n\t\treturn dummy;\n\t}\n\n\tfunction finalizeChange() public {\n\t\tChangeFinalized(dummy);\n\t}\n\n\tfunction changeValidators() public {\n\t\touterSet.initiateChange(0, dummy);\n\t}\n}\n",
+  "sourcePath": "/home/yongwen/work/dlt/private-network/contracts/validator/contracts/InnerTest.sol",
+  "ast": {
+    "attributes": {
+      "absolutePath": "/home/yongwen/work/dlt/private-network/contracts/validator/contracts/InnerTest.sol",
+      "exportedSymbols": {
+        "InnerTest": [
+          1440
+        ]
+      }
+    },
+    "children": [
+      {
+        "attributes": {
+          "literals": [
+            "solidity",
+            "^",
+            "0.4",
+            ".15"
+          ]
+        },
+        "id": 1388,
+        "name": "PragmaDirective",
+        "src": "629:24:3"
+      },
+      {
+        "attributes": {
+          "SourceUnit": 3306,
+          "absolutePath": "/home/yongwen/work/dlt/private-network/contracts/validator/contracts/interfaces/RelaySet.sol",
+          "file": "./interfaces/RelaySet.sol",
+          "scope": 1441,
+          "symbolAliases": [
+            null
+          ],
+          "unitAlias": ""
+        },
+        "id": 1389,
+        "name": "ImportDirective",
+        "src": "655:35:3"
+      },
+      {
+        "attributes": {
+          "contractDependencies": [
+            3305
+          ],
+          "contractKind": "contract",
+          "documentation": null,
+          "fullyImplemented": false,
+          "linearizedBaseContracts": [
+            1440,
+            3305
+          ],
+          "name": "InnerTest",
+          "scope": 1441
+        },
+        "children": [
+          {
+            "attributes": {
+              "arguments": [
+                null
+              ]
+            },
+            "children": [
+              {
+                "attributes": {
+                  "contractScope": null,
+                  "name": "InnerSet",
+                  "referencedDeclaration": 3305,
+                  "type": "contract InnerSet"
+                },
+                "id": 1390,
+                "name": "UserDefinedTypeName",
+                "src": "714:8:3"
+              }
+            ],
+            "id": 1391,
+            "name": "InheritanceSpecifier",
+            "src": "714:8:3"
+          },
+          {
+            "attributes": {
+              "anonymous": false,
+              "name": "ChangeFinalized"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "indexed": false,
+                      "name": "current_set",
+                      "scope": 1396,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address[] memory",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "length": null,
+                          "type": "address[] storage pointer"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "name": "address",
+                              "type": "address"
+                            },
+                            "id": 1392,
+                            "name": "ElementaryTypeName",
+                            "src": "748:7:3"
+                          }
+                        ],
+                        "id": 1393,
+                        "name": "ArrayTypeName",
+                        "src": "748:9:3"
+                      }
+                    ],
+                    "id": 1394,
+                    "name": "VariableDeclaration",
+                    "src": "748:21:3"
+                  }
+                ],
+                "id": 1395,
+                "name": "ParameterList",
+                "src": "747:23:3"
+              }
+            ],
+            "id": 1396,
+            "name": "EventDefinition",
+            "src": "726:45:3"
+          },
+          {
+            "attributes": {
+              "constant": false,
+              "implemented": true,
+              "isConstructor": true,
+              "modifiers": [
+                null
+              ],
+              "name": "InnerTest",
+              "payable": false,
+              "scope": 1440,
+              "stateMutability": "nonpayable",
+              "superFunction": null,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "_outer",
+                      "scope": 1408,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "type": "address"
+                        },
+                        "id": 1397,
+                        "name": "ElementaryTypeName",
+                        "src": "793:7:3"
+                      }
+                    ],
+                    "id": 1398,
+                    "name": "VariableDeclaration",
+                    "src": "793:14:3"
+                  }
+                ],
+                "id": 1399,
+                "name": "ParameterList",
+                "src": "792:16:3"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 1400,
+                "name": "ParameterList",
+                "src": "816:0:3"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "operator": "=",
+                          "type": "contract OuterSet"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 3266,
+                              "type": "contract OuterSet",
+                              "value": "outerSet"
+                            },
+                            "id": 1401,
+                            "name": "Identifier",
+                            "src": "820:8:3"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "isStructConstructorCall": false,
+                              "lValueRequested": false,
+                              "names": [
+                                null
+                              ],
+                              "type": "contract OuterSet",
+                              "type_conversion": true
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": [
+                                    {
+                                      "typeIdentifier": "t_address",
+                                      "typeString": "address"
+                                    }
+                                  ],
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 3264,
+                                  "type": "type(contract OuterSet)",
+                                  "value": "OuterSet"
+                                },
+                                "id": 1402,
+                                "name": "Identifier",
+                                "src": "831:8:3"
+                              },
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 1398,
+                                  "type": "address",
+                                  "value": "_outer"
+                                },
+                                "id": 1403,
+                                "name": "Identifier",
+                                "src": "840:6:3"
+                              }
+                            ],
+                            "id": 1404,
+                            "name": "FunctionCall",
+                            "src": "831:16:3"
+                          }
+                        ],
+                        "id": 1405,
+                        "name": "Assignment",
+                        "src": "820:27:3"
+                      }
+                    ],
+                    "id": 1406,
+                    "name": "ExpressionStatement",
+                    "src": "820:27:3"
+                  }
+                ],
+                "id": 1407,
+                "name": "Block",
+                "src": "816:35:3"
+              }
+            ],
+            "id": 1408,
+            "name": "FunctionDefinition",
+            "src": "774:77:3"
+          },
+          {
+            "attributes": {
+              "constant": false,
+              "name": "dummy",
+              "scope": 1440,
+              "stateVariable": true,
+              "storageLocation": "default",
+              "type": "address[] storage ref",
+              "value": null,
+              "visibility": "internal"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "length": null,
+                  "type": "address[] storage pointer"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "name": "address",
+                      "type": "address"
+                    },
+                    "id": 1409,
+                    "name": "ElementaryTypeName",
+                    "src": "854:7:3"
+                  }
+                ],
+                "id": 1410,
+                "name": "ArrayTypeName",
+                "src": "854:9:3"
+              }
+            ],
+            "id": 1411,
+            "name": "VariableDeclaration",
+            "src": "854:15:3"
+          },
+          {
+            "attributes": {
+              "constant": true,
+              "implemented": true,
+              "isConstructor": false,
+              "modifiers": [
+                null
+              ],
+              "name": "getValidators",
+              "payable": false,
+              "scope": 1440,
+              "stateMutability": "view",
+              "superFunction": 3285,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 1412,
+                "name": "ParameterList",
+                "src": "895:2:3"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "",
+                      "scope": 1420,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address[] memory",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "length": null,
+                          "type": "address[] storage pointer"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "name": "address",
+                              "type": "address"
+                            },
+                            "id": 1413,
+                            "name": "ElementaryTypeName",
+                            "src": "923:7:3"
+                          }
+                        ],
+                        "id": 1414,
+                        "name": "ArrayTypeName",
+                        "src": "923:9:3"
+                      }
+                    ],
+                    "id": 1415,
+                    "name": "VariableDeclaration",
+                    "src": "923:9:3"
+                  }
+                ],
+                "id": 1416,
+                "name": "ParameterList",
+                "src": "922:11:3"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "functionReturnParameters": 1416
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "overloadedDeclarations": [
+                            null
+                          ],
+                          "referencedDeclaration": 1411,
+                          "type": "address[] storage ref",
+                          "value": "dummy"
+                        },
+                        "id": 1417,
+                        "name": "Identifier",
+                        "src": "945:5:3"
+                      }
+                    ],
+                    "id": 1418,
+                    "name": "Return",
+                    "src": "938:12:3"
+                  }
+                ],
+                "id": 1419,
+                "name": "Block",
+                "src": "934:20:3"
+              }
+            ],
+            "id": 1420,
+            "name": "FunctionDefinition",
+            "src": "873:81:3"
+          },
+          {
+            "attributes": {
+              "constant": false,
+              "implemented": true,
+              "isConstructor": false,
+              "modifiers": [
+                null
+              ],
+              "name": "finalizeChange",
+              "payable": false,
+              "scope": 1440,
+              "stateMutability": "nonpayable",
+              "superFunction": 3288,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 1421,
+                "name": "ParameterList",
+                "src": "980:2:3"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 1422,
+                "name": "ParameterList",
+                "src": "990:0:3"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "isStructConstructorCall": false,
+                          "lValueRequested": false,
+                          "names": [
+                            null
+                          ],
+                          "type": "tuple()",
+                          "type_conversion": false
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": [
+                                {
+                                  "typeIdentifier": "t_array$_t_address_$dyn_storage",
+                                  "typeString": "address[] storage ref"
+                                }
+                              ],
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 1396,
+                              "type": "function (address[] memory)",
+                              "value": "ChangeFinalized"
+                            },
+                            "id": 1423,
+                            "name": "Identifier",
+                            "src": "994:15:3"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 1411,
+                              "type": "address[] storage ref",
+                              "value": "dummy"
+                            },
+                            "id": 1424,
+                            "name": "Identifier",
+                            "src": "1010:5:3"
+                          }
+                        ],
+                        "id": 1425,
+                        "name": "FunctionCall",
+                        "src": "994:22:3"
+                      }
+                    ],
+                    "id": 1426,
+                    "name": "ExpressionStatement",
+                    "src": "994:22:3"
+                  }
+                ],
+                "id": 1427,
+                "name": "Block",
+                "src": "990:30:3"
+              }
+            ],
+            "id": 1428,
+            "name": "FunctionDefinition",
+            "src": "957:63:3"
+          },
+          {
+            "attributes": {
+              "constant": false,
+              "implemented": true,
+              "isConstructor": false,
+              "modifiers": [
+                null
+              ],
+              "name": "changeValidators",
+              "payable": false,
+              "scope": 1440,
+              "stateMutability": "nonpayable",
+              "superFunction": null,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 1429,
+                "name": "ParameterList",
+                "src": "1048:2:3"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 1430,
+                "name": "ParameterList",
+                "src": "1058:0:3"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "isStructConstructorCall": false,
+                          "lValueRequested": false,
+                          "names": [
+                            null
+                          ],
+                          "type": "tuple()",
+                          "type_conversion": false
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": [
+                                {
+                                  "typeIdentifier": "t_rational_0_by_1",
+                                  "typeString": "int_const 0"
+                                },
+                                {
+                                  "typeIdentifier": "t_array$_t_address_$dyn_storage",
+                                  "typeString": "address[] storage ref"
+                                }
+                              ],
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "member_name": "initiateChange",
+                              "referencedDeclaration": 3194,
+                              "type": "function (bytes32,address[] memory) external"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 3266,
+                                  "type": "contract OuterSet",
+                                  "value": "outerSet"
+                                },
+                                "id": 1431,
+                                "name": "Identifier",
+                                "src": "1062:8:3"
+                              }
+                            ],
+                            "id": 1433,
+                            "name": "MemberAccess",
+                            "src": "1062:23:3"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "hexvalue": "30",
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": true,
+                              "lValueRequested": false,
+                              "subdenomination": null,
+                              "token": "number",
+                              "type": "int_const 0",
+                              "value": "0"
+                            },
+                            "id": 1434,
+                            "name": "Literal",
+                            "src": "1086:1:3"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 1411,
+                              "type": "address[] storage ref",
+                              "value": "dummy"
+                            },
+                            "id": 1435,
+                            "name": "Identifier",
+                            "src": "1089:5:3"
+                          }
+                        ],
+                        "id": 1436,
+                        "name": "FunctionCall",
+                        "src": "1062:33:3"
+                      }
+                    ],
+                    "id": 1437,
+                    "name": "ExpressionStatement",
+                    "src": "1062:33:3"
+                  }
+                ],
+                "id": 1438,
+                "name": "Block",
+                "src": "1058:41:3"
+              }
+            ],
+            "id": 1439,
+            "name": "FunctionDefinition",
+            "src": "1023:76:3"
+          }
+        ],
+        "id": 1440,
+        "name": "ContractDefinition",
+        "src": "692:409:3"
+      }
+    ],
+    "id": 1441,
+    "name": "SourceUnit",
+    "src": "629:473:3"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.4.18+commit.9cf6e910.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "1.0.1",
+  "updatedAt": "2018-01-19T06:38:42.096Z"
+}
