@@ -47,7 +47,7 @@ contract MajoritySet is ValidatorSet {
 	}
 
 	// System address, used by the block sealer.
-	address constant SYSTEM_ADDRESS = 0xfffffffffffffffffffffffffffffffffffffffe;
+	address constant SYSTEM_ADDRESS = 0xffffFFFfFFffffffffffffffFfFFFfffFFFfFFfE;
 	// Support can not be added once this number of validators is reached.
 	uint public constant MAX_VALIDATORS = 30;
 	// Time after which the validators will report a validator as malicious.
@@ -71,7 +71,7 @@ contract MajoritySet is ValidatorSet {
 
 	// Each validator is initially supported by all others.
 	function MajoritySet() public {
-		pendingList.push(0xf5777f8133aae2734396ab1d43ca54ad11bfb737);
+		pendingList.push(0xF5777f8133aAe2734396ab1d43ca54aD11BFB737);
 
 		initialSupport.count = pendingList.length;
 		for (uint i = 0; i < pendingList.length; i++) {

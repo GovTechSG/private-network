@@ -19,7 +19,7 @@ import "./ValidatorSet.sol";
 
 contract OuterSet is Owned, ValidatorSet {
 	// System address, used by the block sealer.
-	address constant SYSTEM_ADDRESS = 0xfffffffffffffffffffffffffffffffffffffffe;
+	address constant SYSTEM_ADDRESS = 0xffffFFFfFFffffffffffffffFfFFFfffFFFfFFfE;
 	// `getValidators()` method signature.
 	bytes4 constant SIGNATURE = 0xb7ab4db5;
 

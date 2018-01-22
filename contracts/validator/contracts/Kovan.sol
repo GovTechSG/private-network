@@ -32,13 +32,13 @@ contract Kovan is InnerMajoritySet {
 			// Etherscan
 			0x00D6Cc1BA9cf89BD2e58009741f4F7325BAdc0ED,
 			// Attores
-			0x00427feae2419c15b89d1c21af10d1b6650a4d3d,
+			0x00427FEaE2419C15b89D1C21af10D1b6650A4d3D,
 			// TenX (OneBit)
 			0x4Ed9B08e6354C70fE6F8CB0411b0d3246b424d6c,
 			// Melonport
 			0x0020ee4Be0e2027d76603cB751eE069519bA81A1,
 			// Parity
-			0x0010f94b296a852aaac52ea6c5ac72e03afd032d,
+			0x0010f94b296A852aAac52EA6c5Ac72e03afD032D,
 			// DigixGlobal
 			0x007733a1FE69CF3f2CF989F81C7b4cAc1693387A,
 			// Maker
@@ -46,7 +46,7 @@ contract Kovan is InnerMajoritySet {
 			// Aurel
 			0x00e4a10650e5a6D6001C38ff8E64F97016a1645c,
 			// GridSingularity
-			0x00a0a24b9f0e5ec7aa4c7389b8302fd0123194de
+			0x00A0A24b9f0E5EC7Aa4c7389b8302fd0123194dE
 		];
 
 		initialSupport.count = pendingList.length;

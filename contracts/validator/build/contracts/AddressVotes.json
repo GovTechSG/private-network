@@ -92,8 +92,8 @@
   ],
   "bytecode": "0x6060604052341561000f57600080fd5b6103c58061001e6000396000f300606060405260043610610062576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff1680630e420ae314610067578063cb6a023f146100b6578063dab5be0b146100e2578063f473765c14610131575b600080fd5b61009c600480803590602001909190803573ffffffffffffffffffffffffffffffffffffffff16906020019091905050610180565b604051808215151515815260200191505060405180910390f35b6100cc6004808035906020019091905050610258565b6040518082815260200191505060405180910390f35b610117600480803590602001909190803573ffffffffffffffffffffffffffffffffffffffff16906020019091905050610266565b604051808215151515815260200191505060405180910390f35b610166600480803590602001909190803573ffffffffffffffffffffffffffffffffffffffff16906020019091905050610340565b604051808215151515815260200191505060405180910390f35b60008260010160008373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060009054906101000a900460ff16156101df5760009050610252565b826000016000815480929190600101919050555060018360010160008473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060006101000a81548160ff021916908315150217905550600190505b92915050565b600081600001549050919050565b60008260010160008373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060009054906101000a900460ff1615156102c6576000905061033a565b82600001600081548092919060019003919050555060008360010160008473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060006101000a81548160ff021916908315150217905550600190505b92915050565b60008260010160008373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060009054906101000a900460ff169050929150505600a165627a7a72305820ebcc271a7f33b9c2f130104c1363cce4559b27e158e17a289bf44628774250f30029",
   "deployedBytecode": "0x606060405260043610610062576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff1680630e420ae314610067578063cb6a023f146100b6578063dab5be0b146100e2578063f473765c14610131575b600080fd5b61009c600480803590602001909190803573ffffffffffffffffffffffffffffffffffffffff16906020019091905050610180565b604051808215151515815260200191505060405180910390f35b6100cc6004808035906020019091905050610258565b6040518082815260200191505060405180910390f35b610117600480803590602001909190803573ffffffffffffffffffffffffffffffffffffffff16906020019091905050610266565b604051808215151515815260200191505060405180910390f35b610166600480803590602001909190803573ffffffffffffffffffffffffffffffffffffffff16906020019091905050610340565b604051808215151515815260200191505060405180910390f35b60008260010160008373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060009054906101000a900460ff16156101df5760009050610252565b826000016000815480929190600101919050555060018360010160008473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060006101000a81548160ff021916908315150217905550600190505b92915050565b600081600001549050919050565b60008260010160008373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060009054906101000a900460ff1615156102c6576000905061033a565b82600001600081548092919060019003919050555060008360010160008473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060006101000a81548160ff021916908315150217905550600190505b92915050565b60008260010160008373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060009054906101000a900460ff169050929150505600a165627a7a72305820ebcc271a7f33b9c2f130104c1363cce4559b27e158e17a289bf44628774250f30029",
-  "sourceMap": "655:912:12:-;;;;;;;;;;;;;;;;;",
-  "deployedSourceMap": "655:912:12:-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1161:184;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;891:90;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1379:186;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1016:118;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1161:184;1227:4;1241;:13;;:20;1255:5;1241:20;;;;;;;;;;;;;;;;;;;;;;;;;1237:43;;;1272:5;1265:12;;;;1237:43;1283:4;:10;;;:12;;;;;;;;;;;;;1322:4;1299;:13;;:20;1313:5;1299:20;;;;;;;;;;;;;;;;:27;;;;;;;;;;;;;;;;;;1337:4;1330:11;;1161:184;;;;;:::o;891:90::-;950:4;967;:10;;;960:17;;891:90;;;:::o;1379:186::-;1445:4;1460;:13;;:20;1474:5;1460:20;;;;;;;;;;;;;;;;;;;;;;;;;1459:21;1455:44;;;1491:5;1484:12;;;;1455:44;1502:4;:10;;;:12;;;;;;;;;;;;;;1541:5;1518:4;:13;;:20;1532:5;1518:20;;;;;;;;;;;;;;;;:28;;;;;;;;;;;;;;;;;;1557:4;1550:11;;1379:186;;;;;:::o;1016:118::-;1093:4;1110;:13;;:20;1124:5;1110:20;;;;;;;;;;;;;;;;;;;;;;;;;1103:27;;1016:118;;;;:::o",
+  "sourceMap": "655:912:5:-;;;;;;;;;;;;;;;;;",
+  "deployedSourceMap": "655:912:5:-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1161:184;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;891:90;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1379:186;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1016:118;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1161:184;1227:4;1241;:13;;:20;1255:5;1241:20;;;;;;;;;;;;;;;;;;;;;;;;;1237:43;;;1272:5;1265:12;;;;1237:43;1283:4;:10;;;:12;;;;;;;;;;;;;1322:4;1299;:13;;:20;1313:5;1299:20;;;;;;;;;;;;;;;;:27;;;;;;;;;;;;;;;;;;1337:4;1330:11;;1161:184;;;;;:::o;891:90::-;950:4;967;:10;;;960:17;;891:90;;;:::o;1379:186::-;1445:4;1460;:13;;:20;1474:5;1460:20;;;;;;;;;;;;;;;;;;;;;;;;;1459:21;1455:44;;;1491:5;1484:12;;;;1455:44;1502:4;:10;;;:12;;;;;;;;;;;;;;1541:5;1518:4;:13;;:20;1532:5;1518:20;;;;;;;;;;;;;;;;:28;;;;;;;;;;;;;;;;;;1557:4;1550:11;;1379:186;;;;;:::o;1016:118::-;1093:4;1110;:13;;:20;1124:5;1110:20;;;;;;;;;;;;;;;;;;;;;;;;;1103:27;;1016:118;;;;:::o",
   "source": "//! Copyright 2017 Peter Czaban, Parity Technologies Ltd.\n//!\n//! Licensed under the Apache License, Version 2.0 (the \"License\");\n//! you may not use this file except in compliance with the License.\n//! You may obtain a copy of the License at\n//!\n//!     http://www.apache.org/licenses/LICENSE-2.0\n//!\n//! Unless required by applicable law or agreed to in writing, software\n//! distributed under the License is distributed on an \"AS IS\" BASIS,\n//! WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n//! See the License for the specific language governing permissions and\n//! limitations under the License.\n\npragma solidity ^0.4.15;\n\nlibrary AddressVotes {\n\t// Tracks the number of votes from different addresses.\n\tstruct Data {\n\t\tuint count;\n\t\t// Keeps track of who voted, prevents double vote.\n\t\tmapping(address => bool) inserted;\n\t}\n\n\t// Total number of votes cast.\n\tfunction count(Data storage self) public constant returns (uint) {\n\t\treturn self.count;\n\t}\n\n\t// Did the voter already vote.\n\tfunction contains(Data storage self, address voter) public constant returns (bool) {\n\t\treturn self.inserted[voter];\n\t}\n\n\t// Voter casts a vote.\n\tfunction insert(Data storage self, address voter) public returns (bool) {\n\t\tif (self.inserted[voter]) { return false; }\n\t\tself.count++;\n\t\tself.inserted[voter] = true;\n\t\treturn true;\n\t}\n\n\t// Retract a vote by a voter.\n\tfunction remove(Data storage self, address voter) public returns (bool) {\n\t\tif (!self.inserted[voter]) { return false; }\n\t\tself.count--;\n\t\tself.inserted[voter] = false;\n\t\treturn true;\n\t}\n}\n",
   "sourcePath": "/home/yongwen/work/dlt/private-network/contracts/validator/contracts/libraries/AddressVotes.sol",
   "ast": {
@@ -101,7 +101,7 @@
       "absolutePath": "/home/yongwen/work/dlt/private-network/contracts/validator/contracts/libraries/AddressVotes.sol",
       "exportedSymbols": {
         "AddressVotes": [
-          3471
+          1424
         ]
       }
     },
@@ -115,9 +115,9 @@
             ".15"
           ]
         },
-        "id": 3370,
+        "id": 1323,
         "name": "PragmaDirective",
-        "src": "629:24:12"
+        "src": "629:24:5"
       },
       {
         "attributes": {
@@ -131,17 +131,17 @@
           "documentation": null,
           "fullyImplemented": true,
           "linearizedBaseContracts": [
-            3471
+            1424
           ],
           "name": "AddressVotes",
-          "scope": 3472
+          "scope": 1425
         },
         "children": [
           {
             "attributes": {
               "canonicalName": "AddressVotes.Data",
               "name": "Data",
-              "scope": 3471,
+              "scope": 1424,
               "visibility": "public"
             },
             "children": [
@@ -149,7 +149,7 @@
                 "attributes": {
                   "constant": false,
                   "name": "count",
-                  "scope": 3377,
+                  "scope": 1330,
                   "stateVariable": false,
                   "storageLocation": "default",
                   "type": "uint256",
@@ -162,20 +162,20 @@
                       "name": "uint",
                       "type": "uint256"
                     },
-                    "id": 3371,
+                    "id": 1324,
                     "name": "ElementaryTypeName",
-                    "src": "752:4:12"
+                    "src": "752:4:5"
                   }
                 ],
-                "id": 3372,
+                "id": 1325,
                 "name": "VariableDeclaration",
-                "src": "752:10:12"
+                "src": "752:10:5"
               },
               {
                 "attributes": {
                   "constant": false,
                   "name": "inserted",
-                  "scope": 3377,
+                  "scope": 1330,
                   "stateVariable": false,
                   "storageLocation": "default",
                   "type": "mapping(address => bool)",
@@ -193,33 +193,33 @@
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 3373,
+                        "id": 1326,
                         "name": "ElementaryTypeName",
-                        "src": "827:7:12"
+                        "src": "827:7:5"
                       },
                       {
                         "attributes": {
                           "name": "bool",
                           "type": "bool"
                         },
-                        "id": 3374,
+                        "id": 1327,
                         "name": "ElementaryTypeName",
-                        "src": "838:4:12"
+                        "src": "838:4:5"
                       }
                     ],
-                    "id": 3375,
+                    "id": 1328,
                     "name": "Mapping",
-                    "src": "819:24:12"
+                    "src": "819:24:5"
                   }
                 ],
-                "id": 3376,
+                "id": 1329,
                 "name": "VariableDeclaration",
-                "src": "819:33:12"
+                "src": "819:33:5"
               }
             ],
-            "id": 3377,
+            "id": 1330,
             "name": "StructDefinition",
-            "src": "736:120:12"
+            "src": "736:120:5"
           },
           {
             "attributes": {
@@ -231,7 +231,7 @@
               ],
               "name": "count",
               "payable": false,
-              "scope": 3471,
+              "scope": 1424,
               "stateMutability": "view",
               "superFunction": null,
               "visibility": "public"
@@ -243,7 +243,7 @@
                     "attributes": {
                       "constant": false,
                       "name": "self",
-                      "scope": 3388,
+                      "scope": 1341,
                       "stateVariable": false,
                       "storageLocation": "storage",
                       "type": "struct AddressVotes.Data storage pointer",
@@ -255,22 +255,22 @@
                         "attributes": {
                           "contractScope": null,
                           "name": "Data",
-                          "referencedDeclaration": 3377,
+                          "referencedDeclaration": 1330,
                           "type": "struct AddressVotes.Data storage pointer"
                         },
-                        "id": 3378,
+                        "id": 1331,
                         "name": "UserDefinedTypeName",
-                        "src": "906:4:12"
+                        "src": "906:4:5"
                       }
                     ],
-                    "id": 3379,
+                    "id": 1332,
                     "name": "VariableDeclaration",
-                    "src": "906:17:12"
+                    "src": "906:17:5"
                   }
                 ],
-                "id": 3380,
+                "id": 1333,
                 "name": "ParameterList",
-                "src": "905:19:12"
+                "src": "905:19:5"
               },
               {
                 "children": [
@@ -278,7 +278,7 @@
                     "attributes": {
                       "constant": false,
                       "name": "",
-                      "scope": 3388,
+                      "scope": 1341,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -291,25 +291,25 @@
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 3381,
+                        "id": 1334,
                         "name": "ElementaryTypeName",
-                        "src": "950:4:12"
+                        "src": "950:4:5"
                       }
                     ],
-                    "id": 3382,
+                    "id": 1335,
                     "name": "VariableDeclaration",
-                    "src": "950:4:12"
+                    "src": "950:4:5"
                   }
                 ],
-                "id": 3383,
+                "id": 1336,
                 "name": "ParameterList",
-                "src": "949:6:12"
+                "src": "949:6:5"
               },
               {
                 "children": [
                   {
                     "attributes": {
-                      "functionReturnParameters": 3383
+                      "functionReturnParameters": 1336
                     },
                     "children": [
                       {
@@ -320,7 +320,7 @@
                           "isPure": false,
                           "lValueRequested": false,
                           "member_name": "count",
-                          "referencedDeclaration": 3372,
+                          "referencedDeclaration": 1325,
                           "type": "uint256"
                         },
                         "children": [
@@ -330,33 +330,33 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 3379,
+                              "referencedDeclaration": 1332,
                               "type": "struct AddressVotes.Data storage pointer",
                               "value": "self"
                             },
-                            "id": 3384,
+                            "id": 1337,
                             "name": "Identifier",
-                            "src": "967:4:12"
+                            "src": "967:4:5"
                           }
                         ],
-                        "id": 3385,
+                        "id": 1338,
                         "name": "MemberAccess",
-                        "src": "967:10:12"
+                        "src": "967:10:5"
                       }
                     ],
-                    "id": 3386,
+                    "id": 1339,
                     "name": "Return",
-                    "src": "960:17:12"
+                    "src": "960:17:5"
                   }
                 ],
-                "id": 3387,
+                "id": 1340,
                 "name": "Block",
-                "src": "956:25:12"
+                "src": "956:25:5"
               }
             ],
-            "id": 3388,
+            "id": 1341,
             "name": "FunctionDefinition",
-            "src": "891:90:12"
+            "src": "891:90:5"
           },
           {
             "attributes": {
@@ -368,7 +368,7 @@
               ],
               "name": "contains",
               "payable": false,
-              "scope": 3471,
+              "scope": 1424,
               "stateMutability": "view",
               "superFunction": null,
               "visibility": "public"
@@ -380,7 +380,7 @@
                     "attributes": {
                       "constant": false,
                       "name": "self",
-                      "scope": 3403,
+                      "scope": 1356,
                       "stateVariable": false,
                       "storageLocation": "storage",
                       "type": "struct AddressVotes.Data storage pointer",
@@ -392,23 +392,23 @@
                         "attributes": {
                           "contractScope": null,
                           "name": "Data",
-                          "referencedDeclaration": 3377,
+                          "referencedDeclaration": 1330,
                           "type": "struct AddressVotes.Data storage pointer"
                         },
-                        "id": 3389,
+                        "id": 1342,
                         "name": "UserDefinedTypeName",
-                        "src": "1034:4:12"
+                        "src": "1034:4:5"
                       }
                     ],
-                    "id": 3390,
+                    "id": 1343,
                     "name": "VariableDeclaration",
-                    "src": "1034:17:12"
+                    "src": "1034:17:5"
                   },
                   {
                     "attributes": {
                       "constant": false,
                       "name": "voter",
-                      "scope": 3403,
+                      "scope": 1356,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -421,19 +421,19 @@
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 3391,
+                        "id": 1344,
                         "name": "ElementaryTypeName",
-                        "src": "1053:7:12"
+                        "src": "1053:7:5"
                       }
                     ],
-                    "id": 3392,
+                    "id": 1345,
                     "name": "VariableDeclaration",
-                    "src": "1053:13:12"
+                    "src": "1053:13:5"
                   }
                 ],
-                "id": 3393,
+                "id": 1346,
                 "name": "ParameterList",
-                "src": "1033:34:12"
+                "src": "1033:34:5"
               },
               {
                 "children": [
@@ -441,7 +441,7 @@
                     "attributes": {
                       "constant": false,
                       "name": "",
-                      "scope": 3403,
+                      "scope": 1356,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bool",
@@ -454,25 +454,25 @@
                           "name": "bool",
                           "type": "bool"
                         },
-                        "id": 3394,
+                        "id": 1347,
                         "name": "ElementaryTypeName",
-                        "src": "1093:4:12"
+                        "src": "1093:4:5"
                       }
                     ],
-                    "id": 3395,
+                    "id": 1348,
                     "name": "VariableDeclaration",
-                    "src": "1093:4:12"
+                    "src": "1093:4:5"
                   }
                 ],
-                "id": 3396,
+                "id": 1349,
                 "name": "ParameterList",
-                "src": "1092:6:12"
+                "src": "1092:6:5"
               },
               {
                 "children": [
                   {
                     "attributes": {
-                      "functionReturnParameters": 3396
+                      "functionReturnParameters": 1349
                     },
                     "children": [
                       {
@@ -493,7 +493,7 @@
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "inserted",
-                              "referencedDeclaration": 3376,
+                              "referencedDeclaration": 1329,
                               "type": "mapping(address => bool)"
                             },
                             "children": [
@@ -503,18 +503,18 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 3390,
+                                  "referencedDeclaration": 1343,
                                   "type": "struct AddressVotes.Data storage pointer",
                                   "value": "self"
                                 },
-                                "id": 3397,
+                                "id": 1350,
                                 "name": "Identifier",
-                                "src": "1110:4:12"
+                                "src": "1110:4:5"
                               }
                             ],
-                            "id": 3398,
+                            "id": 1351,
                             "name": "MemberAccess",
-                            "src": "1110:13:12"
+                            "src": "1110:13:5"
                           },
                           {
                             "attributes": {
@@ -522,33 +522,33 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 3392,
+                              "referencedDeclaration": 1345,
                               "type": "address",
                               "value": "voter"
                             },
-                            "id": 3399,
+                            "id": 1352,
                             "name": "Identifier",
-                            "src": "1124:5:12"
+                            "src": "1124:5:5"
                           }
                         ],
-                        "id": 3400,
+                        "id": 1353,
                         "name": "IndexAccess",
-                        "src": "1110:20:12"
+                        "src": "1110:20:5"
                       }
                     ],
-                    "id": 3401,
+                    "id": 1354,
                     "name": "Return",
-                    "src": "1103:27:12"
+                    "src": "1103:27:5"
                   }
                 ],
-                "id": 3402,
+                "id": 1355,
                 "name": "Block",
-                "src": "1099:35:12"
+                "src": "1099:35:5"
               }
             ],
-            "id": 3403,
+            "id": 1356,
             "name": "FunctionDefinition",
-            "src": "1016:118:12"
+            "src": "1016:118:5"
           },
           {
             "attributes": {
@@ -560,7 +560,7 @@
               ],
               "name": "insert",
               "payable": false,
-              "scope": 3471,
+              "scope": 1424,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "public"
@@ -572,7 +572,7 @@
                     "attributes": {
                       "constant": false,
                       "name": "self",
-                      "scope": 3436,
+                      "scope": 1389,
                       "stateVariable": false,
                       "storageLocation": "storage",
                       "type": "struct AddressVotes.Data storage pointer",
@@ -584,23 +584,23 @@
                         "attributes": {
                           "contractScope": null,
                           "name": "Data",
-                          "referencedDeclaration": 3377,
+                          "referencedDeclaration": 1330,
                           "type": "struct AddressVotes.Data storage pointer"
                         },
-                        "id": 3404,
+                        "id": 1357,
                         "name": "UserDefinedTypeName",
-                        "src": "1177:4:12"
+                        "src": "1177:4:5"
                       }
                     ],
-                    "id": 3405,
+                    "id": 1358,
                     "name": "VariableDeclaration",
-                    "src": "1177:17:12"
+                    "src": "1177:17:5"
                   },
                   {
                     "attributes": {
                       "constant": false,
                       "name": "voter",
-                      "scope": 3436,
+                      "scope": 1389,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -613,19 +613,19 @@
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 3406,
+                        "id": 1359,
                         "name": "ElementaryTypeName",
-                        "src": "1196:7:12"
+                        "src": "1196:7:5"
                       }
                     ],
-                    "id": 3407,
+                    "id": 1360,
                     "name": "VariableDeclaration",
-                    "src": "1196:13:12"
+                    "src": "1196:13:5"
                   }
                 ],
-                "id": 3408,
+                "id": 1361,
                 "name": "ParameterList",
-                "src": "1176:34:12"
+                "src": "1176:34:5"
               },
               {
                 "children": [
@@ -633,7 +633,7 @@
                     "attributes": {
                       "constant": false,
                       "name": "",
-                      "scope": 3436,
+                      "scope": 1389,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bool",
@@ -646,19 +646,19 @@
                           "name": "bool",
                           "type": "bool"
                         },
-                        "id": 3409,
+                        "id": 1362,
                         "name": "ElementaryTypeName",
-                        "src": "1227:4:12"
+                        "src": "1227:4:5"
                       }
                     ],
-                    "id": 3410,
+                    "id": 1363,
                     "name": "VariableDeclaration",
-                    "src": "1227:4:12"
+                    "src": "1227:4:5"
                   }
                 ],
-                "id": 3411,
+                "id": 1364,
                 "name": "ParameterList",
-                "src": "1226:6:12"
+                "src": "1226:6:5"
               },
               {
                 "children": [
@@ -685,7 +685,7 @@
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "inserted",
-                              "referencedDeclaration": 3376,
+                              "referencedDeclaration": 1329,
                               "type": "mapping(address => bool)"
                             },
                             "children": [
@@ -695,18 +695,18 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 3405,
+                                  "referencedDeclaration": 1358,
                                   "type": "struct AddressVotes.Data storage pointer",
                                   "value": "self"
                                 },
-                                "id": 3412,
+                                "id": 1365,
                                 "name": "Identifier",
-                                "src": "1241:4:12"
+                                "src": "1241:4:5"
                               }
                             ],
-                            "id": 3413,
+                            "id": 1366,
                             "name": "MemberAccess",
-                            "src": "1241:13:12"
+                            "src": "1241:13:5"
                           },
                           {
                             "attributes": {
@@ -714,24 +714,24 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 3407,
+                              "referencedDeclaration": 1360,
                               "type": "address",
                               "value": "voter"
                             },
-                            "id": 3414,
+                            "id": 1367,
                             "name": "Identifier",
-                            "src": "1255:5:12"
+                            "src": "1255:5:5"
                           }
                         ],
-                        "id": 3415,
+                        "id": 1368,
                         "name": "IndexAccess",
-                        "src": "1241:20:12"
+                        "src": "1241:20:5"
                       },
                       {
                         "children": [
                           {
                             "attributes": {
-                              "functionReturnParameters": 3411
+                              "functionReturnParameters": 1364
                             },
                             "children": [
                               {
@@ -747,24 +747,24 @@
                                   "type": "bool",
                                   "value": "false"
                                 },
-                                "id": 3416,
+                                "id": 1369,
                                 "name": "Literal",
-                                "src": "1272:5:12"
+                                "src": "1272:5:5"
                               }
                             ],
-                            "id": 3417,
+                            "id": 1370,
                             "name": "Return",
-                            "src": "1265:12:12"
+                            "src": "1265:12:5"
                           }
                         ],
-                        "id": 3418,
+                        "id": 1371,
                         "name": "Block",
-                        "src": "1263:17:12"
+                        "src": "1263:17:5"
                       }
                     ],
-                    "id": 3419,
+                    "id": 1372,
                     "name": "IfStatement",
-                    "src": "1237:43:12"
+                    "src": "1237:43:5"
                   },
                   {
                     "children": [
@@ -788,7 +788,7 @@
                               "isPure": false,
                               "lValueRequested": true,
                               "member_name": "count",
-                              "referencedDeclaration": 3372,
+                              "referencedDeclaration": 1325,
                               "type": "uint256"
                             },
                             "children": [
@@ -798,28 +798,28 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 3405,
+                                  "referencedDeclaration": 1358,
                                   "type": "struct AddressVotes.Data storage pointer",
                                   "value": "self"
                                 },
-                                "id": 3420,
+                                "id": 1373,
                                 "name": "Identifier",
-                                "src": "1283:4:12"
+                                "src": "1283:4:5"
                               }
                             ],
-                            "id": 3422,
+                            "id": 1375,
                             "name": "MemberAccess",
-                            "src": "1283:10:12"
+                            "src": "1283:10:5"
                           }
                         ],
-                        "id": 3423,
+                        "id": 1376,
                         "name": "UnaryOperation",
-                        "src": "1283:12:12"
+                        "src": "1283:12:5"
                       }
                     ],
-                    "id": 3424,
+                    "id": 1377,
                     "name": "ExpressionStatement",
-                    "src": "1283:12:12"
+                    "src": "1283:12:5"
                   },
                   {
                     "children": [
@@ -852,7 +852,7 @@
                                   "isPure": false,
                                   "lValueRequested": false,
                                   "member_name": "inserted",
-                                  "referencedDeclaration": 3376,
+                                  "referencedDeclaration": 1329,
                                   "type": "mapping(address => bool)"
                                 },
                                 "children": [
@@ -862,18 +862,18 @@
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 3405,
+                                      "referencedDeclaration": 1358,
                                       "type": "struct AddressVotes.Data storage pointer",
                                       "value": "self"
                                     },
-                                    "id": 3425,
+                                    "id": 1378,
                                     "name": "Identifier",
-                                    "src": "1299:4:12"
+                                    "src": "1299:4:5"
                                   }
                                 ],
-                                "id": 3428,
+                                "id": 1381,
                                 "name": "MemberAccess",
-                                "src": "1299:13:12"
+                                "src": "1299:13:5"
                               },
                               {
                                 "attributes": {
@@ -881,18 +881,18 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 3407,
+                                  "referencedDeclaration": 1360,
                                   "type": "address",
                                   "value": "voter"
                                 },
-                                "id": 3427,
+                                "id": 1380,
                                 "name": "Identifier",
-                                "src": "1313:5:12"
+                                "src": "1313:5:5"
                               }
                             ],
-                            "id": 3429,
+                            "id": 1382,
                             "name": "IndexAccess",
-                            "src": "1299:20:12"
+                            "src": "1299:20:5"
                           },
                           {
                             "attributes": {
@@ -907,23 +907,23 @@
                               "type": "bool",
                               "value": "true"
                             },
-                            "id": 3430,
+                            "id": 1383,
                             "name": "Literal",
-                            "src": "1322:4:12"
+                            "src": "1322:4:5"
                           }
                         ],
-                        "id": 3431,
+                        "id": 1384,
                         "name": "Assignment",
-                        "src": "1299:27:12"
+                        "src": "1299:27:5"
                       }
                     ],
-                    "id": 3432,
+                    "id": 1385,
                     "name": "ExpressionStatement",
-                    "src": "1299:27:12"
+                    "src": "1299:27:5"
                   },
                   {
                     "attributes": {
-                      "functionReturnParameters": 3411
+                      "functionReturnParameters": 1364
                     },
                     "children": [
                       {
@@ -939,24 +939,24 @@
                           "type": "bool",
                           "value": "true"
                         },
-                        "id": 3433,
+                        "id": 1386,
                         "name": "Literal",
-                        "src": "1337:4:12"
+                        "src": "1337:4:5"
                       }
                     ],
-                    "id": 3434,
+                    "id": 1387,
                     "name": "Return",
-                    "src": "1330:11:12"
+                    "src": "1330:11:5"
                   }
                 ],
-                "id": 3435,
+                "id": 1388,
                 "name": "Block",
-                "src": "1233:112:12"
+                "src": "1233:112:5"
               }
             ],
-            "id": 3436,
+            "id": 1389,
             "name": "FunctionDefinition",
-            "src": "1161:184:12"
+            "src": "1161:184:5"
           },
           {
             "attributes": {
@@ -968,7 +968,7 @@
               ],
               "name": "remove",
               "payable": false,
-              "scope": 3471,
+              "scope": 1424,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "public"
@@ -980,7 +980,7 @@
                     "attributes": {
                       "constant": false,
                       "name": "self",
-                      "scope": 3470,
+                      "scope": 1423,
                       "stateVariable": false,
                       "storageLocation": "storage",
                       "type": "struct AddressVotes.Data storage pointer",
@@ -992,23 +992,23 @@
                         "attributes": {
                           "contractScope": null,
                           "name": "Data",
-                          "referencedDeclaration": 3377,
+                          "referencedDeclaration": 1330,
                           "type": "struct AddressVotes.Data storage pointer"
                         },
-                        "id": 3437,
+                        "id": 1390,
                         "name": "UserDefinedTypeName",
-                        "src": "1395:4:12"
+                        "src": "1395:4:5"
                       }
                     ],
-                    "id": 3438,
+                    "id": 1391,
                     "name": "VariableDeclaration",
-                    "src": "1395:17:12"
+                    "src": "1395:17:5"
                   },
                   {
                     "attributes": {
                       "constant": false,
                       "name": "voter",
-                      "scope": 3470,
+                      "scope": 1423,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -1021,19 +1021,19 @@
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 3439,
+                        "id": 1392,
                         "name": "ElementaryTypeName",
-                        "src": "1414:7:12"
+                        "src": "1414:7:5"
                       }
                     ],
-                    "id": 3440,
+                    "id": 1393,
                     "name": "VariableDeclaration",
-                    "src": "1414:13:12"
+                    "src": "1414:13:5"
                   }
                 ],
-                "id": 3441,
+                "id": 1394,
                 "name": "ParameterList",
-                "src": "1394:34:12"
+                "src": "1394:34:5"
               },
               {
                 "children": [
@@ -1041,7 +1041,7 @@
                     "attributes": {
                       "constant": false,
                       "name": "",
-                      "scope": 3470,
+                      "scope": 1423,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bool",
@@ -1054,19 +1054,19 @@
                           "name": "bool",
                           "type": "bool"
                         },
-                        "id": 3442,
+                        "id": 1395,
                         "name": "ElementaryTypeName",
-                        "src": "1445:4:12"
+                        "src": "1445:4:5"
                       }
                     ],
-                    "id": 3443,
+                    "id": 1396,
                     "name": "VariableDeclaration",
-                    "src": "1445:4:12"
+                    "src": "1445:4:5"
                   }
                 ],
-                "id": 3444,
+                "id": 1397,
                 "name": "ParameterList",
-                "src": "1444:6:12"
+                "src": "1444:6:5"
               },
               {
                 "children": [
@@ -1105,7 +1105,7 @@
                                   "isPure": false,
                                   "lValueRequested": false,
                                   "member_name": "inserted",
-                                  "referencedDeclaration": 3376,
+                                  "referencedDeclaration": 1329,
                                   "type": "mapping(address => bool)"
                                 },
                                 "children": [
@@ -1115,18 +1115,18 @@
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 3438,
+                                      "referencedDeclaration": 1391,
                                       "type": "struct AddressVotes.Data storage pointer",
                                       "value": "self"
                                     },
-                                    "id": 3445,
+                                    "id": 1398,
                                     "name": "Identifier",
-                                    "src": "1460:4:12"
+                                    "src": "1460:4:5"
                                   }
                                 ],
-                                "id": 3446,
+                                "id": 1399,
                                 "name": "MemberAccess",
-                                "src": "1460:13:12"
+                                "src": "1460:13:5"
                               },
                               {
                                 "attributes": {
@@ -1134,29 +1134,29 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 3440,
+                                  "referencedDeclaration": 1393,
                                   "type": "address",
                                   "value": "voter"
                                 },
-                                "id": 3447,
+                                "id": 1400,
                                 "name": "Identifier",
-                                "src": "1474:5:12"
+                                "src": "1474:5:5"
                               }
                             ],
-                            "id": 3448,
+                            "id": 1401,
                             "name": "IndexAccess",
-                            "src": "1460:20:12"
+                            "src": "1460:20:5"
                           }
                         ],
-                        "id": 3449,
+                        "id": 1402,
                         "name": "UnaryOperation",
-                        "src": "1459:21:12"
+                        "src": "1459:21:5"
                       },
                       {
                         "children": [
                           {
                             "attributes": {
-                              "functionReturnParameters": 3444
+                              "functionReturnParameters": 1397
                             },
                             "children": [
                               {
@@ -1172,24 +1172,24 @@
                                   "type": "bool",
                                   "value": "false"
                                 },
-                                "id": 3450,
+                                "id": 1403,
                                 "name": "Literal",
-                                "src": "1491:5:12"
+                                "src": "1491:5:5"
                               }
                             ],
-                            "id": 3451,
+                            "id": 1404,
                             "name": "Return",
-                            "src": "1484:12:12"
+                            "src": "1484:12:5"
                           }
                         ],
-                        "id": 3452,
+                        "id": 1405,
                         "name": "Block",
-                        "src": "1482:17:12"
+                        "src": "1482:17:5"
                       }
                     ],
-                    "id": 3453,
+                    "id": 1406,
                     "name": "IfStatement",
-                    "src": "1455:44:12"
+                    "src": "1455:44:5"
                   },
                   {
                     "children": [
@@ -1213,7 +1213,7 @@
                               "isPure": false,
                               "lValueRequested": true,
                               "member_name": "count",
-                              "referencedDeclaration": 3372,
+                              "referencedDeclaration": 1325,
                               "type": "uint256"
                             },
                             "children": [
@@ -1223,28 +1223,28 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 3438,
+                                  "referencedDeclaration": 1391,
                                   "type": "struct AddressVotes.Data storage pointer",
                                   "value": "self"
                                 },
-                                "id": 3454,
+                                "id": 1407,
                                 "name": "Identifier",
-                                "src": "1502:4:12"
+                                "src": "1502:4:5"
                               }
                             ],
-                            "id": 3456,
+                            "id": 1409,
                             "name": "MemberAccess",
-                            "src": "1502:10:12"
+                            "src": "1502:10:5"
                           }
                         ],
-                        "id": 3457,
+                        "id": 1410,
                         "name": "UnaryOperation",
-                        "src": "1502:12:12"
+                        "src": "1502:12:5"
                       }
                     ],
-                    "id": 3458,
+                    "id": 1411,
                     "name": "ExpressionStatement",
-                    "src": "1502:12:12"
+                    "src": "1502:12:5"
                   },
                   {
                     "children": [
@@ -1277,7 +1277,7 @@
                                   "isPure": false,
                                   "lValueRequested": false,
                                   "member_name": "inserted",
-                                  "referencedDeclaration": 3376,
+                                  "referencedDeclaration": 1329,
                                   "type": "mapping(address => bool)"
                                 },
                                 "children": [
@@ -1287,18 +1287,18 @@
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 3438,
+                                      "referencedDeclaration": 1391,
                                       "type": "struct AddressVotes.Data storage pointer",
                                       "value": "self"
                                     },
-                                    "id": 3459,
+                                    "id": 1412,
                                     "name": "Identifier",
-                                    "src": "1518:4:12"
+                                    "src": "1518:4:5"
                                   }
                                 ],
-                                "id": 3462,
+                                "id": 1415,
                                 "name": "MemberAccess",
-                                "src": "1518:13:12"
+                                "src": "1518:13:5"
                               },
                               {
                                 "attributes": {
@@ -1306,18 +1306,18 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 3440,
+                                  "referencedDeclaration": 1393,
                                   "type": "address",
                                   "value": "voter"
                                 },
-                                "id": 3461,
+                                "id": 1414,
                                 "name": "Identifier",
-                                "src": "1532:5:12"
+                                "src": "1532:5:5"
                               }
                             ],
-                            "id": 3463,
+                            "id": 1416,
                             "name": "IndexAccess",
-                            "src": "1518:20:12"
+                            "src": "1518:20:5"
                           },
                           {
                             "attributes": {
@@ -1332,23 +1332,23 @@
                               "type": "bool",
                               "value": "false"
                             },
-                            "id": 3464,
+                            "id": 1417,
                             "name": "Literal",
-                            "src": "1541:5:12"
+                            "src": "1541:5:5"
                           }
                         ],
-                        "id": 3465,
+                        "id": 1418,
                         "name": "Assignment",
-                        "src": "1518:28:12"
+                        "src": "1518:28:5"
                       }
                     ],
-                    "id": 3466,
+                    "id": 1419,
                     "name": "ExpressionStatement",
-                    "src": "1518:28:12"
+                    "src": "1518:28:5"
                   },
                   {
                     "attributes": {
-                      "functionReturnParameters": 3444
+                      "functionReturnParameters": 1397
                     },
                     "children": [
                       {
@@ -1364,34 +1364,34 @@
                           "type": "bool",
                           "value": "true"
                         },
-                        "id": 3467,
+                        "id": 1420,
                         "name": "Literal",
-                        "src": "1557:4:12"
+                        "src": "1557:4:5"
                       }
                     ],
-                    "id": 3468,
+                    "id": 1421,
                     "name": "Return",
-                    "src": "1550:11:12"
+                    "src": "1550:11:5"
                   }
                 ],
-                "id": 3469,
+                "id": 1422,
                 "name": "Block",
-                "src": "1451:114:12"
+                "src": "1451:114:5"
               }
             ],
-            "id": 3470,
+            "id": 1423,
             "name": "FunctionDefinition",
-            "src": "1379:186:12"
+            "src": "1379:186:5"
           }
         ],
-        "id": 3471,
+        "id": 1424,
         "name": "ContractDefinition",
-        "src": "655:912:12"
+        "src": "655:912:5"
       }
     ],
-    "id": 3472,
+    "id": 1425,
     "name": "SourceUnit",
-    "src": "629:939:12"
+    "src": "629:939:5"
   },
   "compiler": {
     "name": "solc",
@@ -1399,5 +1399,5 @@
   },
   "networks": {},
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-01-19T06:38:42.102Z"
+  "updatedAt": "2018-01-22T02:50:11.295Z"
 }

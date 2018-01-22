@@ -59,7 +59,7 @@ contract InnerMajoritySet is InnerSet {
 	// Current list of addresses entitled to participate in the consensus.
 	address[] public validatorsList;
 	// Pending list of validator addresses.
-	address[] pendingList = [0xf5777f8133aae2734396ab1d43ca54ad11bfb737];
+	address[] pendingList = [0xF5777f8133aAe2734396ab1d43ca54aD11BFB737];
 	// Tracker of status for each address.
 	mapping(address => ValidatorStatus) validatorsStatus;
 
