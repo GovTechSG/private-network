@@ -1,0 +1,8 @@
+[parity]
+base_path = "/parity"
+chain = "/config/poa.json"
+
+[rpc]
+interface = "0.0.0.0"
+apis = ["web3", "eth", "net", "personal", "parity", "parity_set", "traces", "rpc", "parity_accounts"]
+

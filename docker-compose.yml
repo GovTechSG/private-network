@@ -1,0 +1,10 @@
+version: "2.3"
+services:
+  # EXPOSE 8080 8545 8180
+  validator_one:
+    image: parity/parity:nightly
+    volumes:
+      - ./config:/config
+    command: ["--config", "/config/validators.toml"]
+    ports:
+      - 8545:8545
