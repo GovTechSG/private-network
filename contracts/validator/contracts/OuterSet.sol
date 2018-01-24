@@ -6,8 +6,9 @@ contract OuterSet is ValidatorSet {
 	// System address, used by the block sealer.
 	address constant SYSTEM_ADDRESS = 0xffffFFFfFFffffffffffffffFfFFFfffFFFfFFfE;
 	// `getValidators()` method signature.
-	bytes4 constant SIGNATURE = 0xb7ab4db5;
+	// bytes4 constant SIGNATURE = 0xb7ab4db5;
 
+	// XXX: Multiple owners?
     address public owner;
     event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);
 
@@ -58,6 +59,11 @@ contract OuterSet is ValidatorSet {
     function() external {
     }
 
+	modifier onlyOwnerAndFinalized() {
+		require(msg.sender == owner && finalized);
+		_;
+	}
+
 	modifier onlySystemAndNotFinalized() {
 		require(msg.sender == SYSTEM_ADDRESS && !finalized);
 		_;
@@ -68,8 +74,25 @@ contract OuterSet is ValidatorSet {
 		_;
 	}
 
-	function setInner(address _inner) public onlyOwner {
-		innerSet = InnerSet(_inner);
+	/// When changing inner, you MUST make sure the inner and the outer have the same validator set
+	// XXX: Maybe make this be more flexible?
+	function setInner(address _inner) public onlyOwnerAndFinalized {
+		uint validatorLength;
+		uint newValidatorLength;
+		address[32] memory validators;
+		address[32] memory newValidators;
+
+		InnerSet newInnerSet = InnerSet(_inner);
+
+		(validators, validatorLength) = innerSet.getValidators();
+		(newValidators, newValidatorLength) = newInnerSet.getValidators();
+
+		require(validatorLength == newValidatorLength);
+		for (uint i = 0; i < validatorLength; i++) {
+			require(validators[i] == newValidators[i]);
+		}
+
+		innerSet = newInnerSet;
 	}
 
 	// For innerSet
