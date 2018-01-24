@@ -16,7 +16,10 @@ const genesisOuterSetAddress = "0x0000000000000000000000000000000000000005";
 
 const networkDeployers = {
     "development": deployDevelopment,
-    "parity": deployParity
+    "parity_master": deployParity,
+    "parity_authority1": (deployer) => {},
+    "parity_authority2": (deployer) => {},
+    "parity_authority3": (deployer) => {},
 };
 
 function deployInnerMajoritySet(deployer, outerSetAddress) {
