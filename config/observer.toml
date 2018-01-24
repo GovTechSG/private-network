@@ -4,9 +4,6 @@ db_path = "/chain"
 keys_path = "/config/keys"
 chain = "/config/chain.json"
 
-[account]
-password = ["/config/password"]
-
 [network]
 bootnodes = [
     "enode://014edc50f3621eba351b70ee05e36f17ea4b25ce54e8dca7bd484b473be4a5002f0d87f3120ca4112559fcc49ae8d0f1b1d033988fbee75454c815f93dae8a62@172.16.0.10:30303",
@@ -17,9 +14,3 @@ bootnodes = [
 [rpc]
 interface = "0.0.0.0"
 apis = ["web3", "eth", "net", "personal", "parity", "parity_set", "traces", "rpc", "parity_accounts"]
-
-[mining]
-force_sealing = true
-reseal_on_txs = "all"
-refuse_service_transactions = false
-usd_per_tx = "0"
