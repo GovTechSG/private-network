@@ -1,0 +1,27 @@
+[parity]
+base_path = "/data"
+db_path = "/chain"
+keys_path = "/config/keys"
+chain = "/config/chain.json"
+
+[account]
+# unlock = ["0xfC4C1475C4DaBfcBB49dc2138337F9db8eedfF58"]
+password = ["/config/password"]
+
+[network]
+bootnodes = [
+    "enode://014edc50f3621eba351b70ee05e36f17ea4b25ce54e8dca7bd484b473be4a5002f0d87f3120ca4112559fcc49ae8d0f1b1d033988fbee75454c815f93dae8a62@172.16.0.10:30303",
+    "enode://d09ad2a521a448ed5563df4195f615423c3e18ece9f0c2b219dd12b18fe20210f821712b89460d50d8a5a3785dedb66ebc6e716120b3a3fbd01e6c7911b80825@172.16.0.11:30303",
+    "enode://eff6f23c22ee7797ce0cbfcffcc26edcf14ef7182d812d0ddf0bebe60ddea738dfefaa504d45957d4b28146023cf0346d96125e1b69f18e6c07f2c0b5fe02a76@172.16.0.12:30303",
+]
+
+[rpc]
+interface = "0.0.0.0"
+apis = ["web3", "eth", "net", "personal", "parity", "parity_set", "traces", "rpc", "parity_accounts"]
+
+[mining]
+# engine_signer = "0xfC4C1475C4DaBfcBB49dc2138337F9db8eedfF58"
+force_sealing = true
+reseal_on_txs = "all"
+refuse_service_transactions = false
+usd_per_tx = "0"

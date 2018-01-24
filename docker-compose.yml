@@ -1,10 +1,103 @@
+# Network Name: DemoPoA
+# EXPOSE 8080 8545 8180
+
 version: "2.3"
 services:
-  # EXPOSE 8080 8545 8180
-  validator_one:
-    image: parity/parity:nightly
+
+  ###############################################################
+  # Master Node
+  ###############################################################
+  master:
+    image: parity/parity:v1.8.7
     volumes:
-      - ./config:/config
-    command: ["--config", "/config/validators.toml"]
+      - ./config/demo_poa.json:/config/chain.json:ro
+      - ./config/authority.toml:/config/config.toml:ro
+      - ./config/keys/authorities/master.json:/config/keys/DemoPoA/authority.json:ro
+      - ./config/keys/authorities/master.pwd:/config/password:ro
+      - master_chain:/chain
+      - master_base:/data
+    command:
+      - "--config"
+      - "/config/config.toml"
+      - "--engine-signer"
+      - "0xfC4C1475C4DaBfcBB49dc2138337F9db8eedfF58"
+      - "--node-key"
+      - "679c27679f8baa861788baa2586609fb15cc31d99e7b448b4659186cb2941d36"
+      - "--unlock"
+      - "0xfC4C1475C4DaBfcBB49dc2138337F9db8eedfF58"
     ports:
       - 8545:8545
+    networks:
+      poa:
+        ipv4_address: 172.16.0.10
+    userns_mode: host
+
+  ###############################################################
+  # Initial authority one Node
+  ###############################################################
+  authority1:
+    image: parity/parity:v1.8.7
+    volumes:
+      - ./config/demo_poa.json:/config/chain.json:ro
+      - ./config/authority.toml:/config/config.toml:ro
+      - ./config/keys/authorities/authority1.json:/config/keys/DemoPoA/authority.json:ro
+      - ./config/keys/authorities/authority1.pwd:/config/password:ro
+      - authority1_chain:/chain
+      - authority1_base:/data
+    command:
+      - "--config"
+      - "/config/config.toml"
+      - "--engine-signer"
+      - "0xa2557aB1F214600A7AD1fA12fCad0C97135eeEA6"
+      - "--node-key"
+      - "2c19cb7f4939b7a829470e9ff783490222e0b8520888a52a53200ff680069252"
+    networks:
+      poa:
+        ipv4_address: 172.16.0.11
+    userns_mode: host
+
+  ###############################################################
+  # Initial authority two Node
+  ###############################################################
+  authority2:
+    image: parity/parity:v1.8.7
+    volumes:
+      - ./config/demo_poa.json:/config/chain.json:ro
+      - ./config/authority.toml:/config/config.toml:ro
+      - ./config/keys/authorities/authority2.json:/config/keys/DemoPoA/authority.json:ro
+      - ./config/keys/authorities/authority2.pwd:/config/password:ro
+      - authority2_chain:/chain
+      - authority2_base:/data
+    command:
+      - "--config"
+      - "/config/config.toml"
+      - "--engine-signer"
+      - "0x442290b65483DB5F2520b1E8609Bd3e47fd3F3C4"
+      - "--node-key"
+      - "8e286dc35873e7eac423d13d0f6be9f6684541fb0d24bbf40d0a3b2e8d47338e"
+    networks:
+      poa:
+        ipv4_address: 172.16.0.12
+    userns_mode: host
+
+###############################################################
+# Network settings
+###############################################################
+networks:
+  poa:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.16.0.0/24
+
+###############################################################
+# Volumes
+###############################################################
+volumes:
+  master_base: {}
+  master_chain: {}
+  authority1_base: {}
+  authority1_chain: {}
+  authority2_base: {}
+  authority2_chain: {}

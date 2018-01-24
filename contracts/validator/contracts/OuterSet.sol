@@ -27,7 +27,7 @@ contract OuterSet is ValidatorSet {
 
     function OuterSet(address innerSetInitial) public {
         // Set original owner here!
-        owner = 0xffffFFFfFFffffffffffffffFfFFFfffFFFfFFfE;
+        owner = 0xfC4C1475C4DaBfcBB49dc2138337F9db8eedfF58;
 		OwnershipTransferred(0, owner);
 
         if (innerSetInitial == 0) {
@@ -132,9 +132,13 @@ contract InnerSet {
 
 contract InnerSetInitial is InnerSet {
     // Initial set of validator list
-    address[32] public validatorList = [0x00D6Cc1BA9cf89BD2e58009741f4F7325BAdc0ED];
+    address[32] public validatorList = [
+		0xfC4C1475C4DaBfcBB49dc2138337F9db8eedfF58,
+		0xa2557aB1F214600A7AD1fA12fCad0C97135eeEA6,
+		0x442290b65483DB5F2520b1E8609Bd3e47fd3F3C4
+	];
 	// Number of initial validator list
-	uint numberOfValidators = 1;
+	uint numberOfValidators = 3;
 
     function InnerSetInitial(address outerSetAddress) public {
         if (outerSetAddress == 0) {
