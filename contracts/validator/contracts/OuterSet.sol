@@ -26,8 +26,13 @@ contract OuterSet is ValidatorSet {
     }
 
     function OuterSet(address innerSetInitial) public {
-        // Set original owner here!
-        owner = 0xfC4C1475C4DaBfcBB49dc2138337F9db8eedfF58;
+		if (msg.sender == 0) {
+        	// Set original owner here!
+        	owner = 0xfC4C1475C4DaBfcBB49dc2138337F9db8eedfF58;
+		} else {
+			owner = msg.sender;
+		}
+
 		OwnershipTransferred(0, owner);
 
         if (innerSetInitial == 0) {
@@ -119,7 +124,7 @@ contract OuterSet is ValidatorSet {
 contract InnerSet {
 	OuterSet public outerSet;
 
-	modifier only_outer() {
+	modifier onlyOuter() {
 		require(msg.sender == address(outerSet));
 		_;
 	}
