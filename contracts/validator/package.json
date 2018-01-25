@@ -5,11 +5,22 @@
   "license": "MIT",
   "scripts": {
     "solium": "solium",
-    "lint": "yarn run lint-sol",
-    "lint-sol": "solium -d contracts/"
+    "lint": "yarn run lint-sol && yarn run eslint",
+    "lint-sol": "solium -d contracts/",
+    "eslint": "eslint . --ext .js --ext .jsx"
   },
   "dependencies": {
+    "babel-eslint": "^8.2.1",
+    "eslint": "^4.16.0",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-mocha": "^4.11.0",
+    "eslint-plugin-prettier": "^2.5.0",
     "ganache-cli": "^6.0.3",
+    "mocha": "^5.0.0",
+    "prettier": "^1.10.2",
+    "sinon": "^4.2.1",
     "solium": "^1.1.3",
     "truffle": "^4.0.5"
   }
