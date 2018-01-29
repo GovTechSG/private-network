@@ -6,27 +6,26 @@ const AddressVotes = artifacts.require("./libraries/AddressVotes.sol");
 const genesisOuterSetAddress = "0x0000000000000000000000000000000000000005";
 
 function deployInnerMajoritySet(deployer, outerSetAddress) {
-  deployer.deploy(AddressVotes);
-  deployer.link(AddressVotes, InnerMajortiySet);
-
   return deployer
-    .deploy(InnerMajortiySet, outerSetAddress)
+    .deploy(AddressVotes)
+    .then(() => deployer.link(AddressVotes, InnerMajortiySet))
+    .then(() => deployer.deploy(InnerMajortiySet, outerSetAddress))
     .then(() => OuterSet.at(outerSetAddress))
     .then(instance => instance.setInner(InnerMajortiySet.address));
 }
 
 // In a development environment, we need to deploy `OuterSet` manually.
 // `InnerSetInitial` can be skipped
-function deployDevelopment(deployer) {
-  deployer
+async function deployDevelopment(deployer) {
+  await deployer
     .deploy(InnerSetInitial)
     .then(() => deployer.deploy(OuterSet, InnerSetInitial.address));
 
-  return deployInnerMajoritySet(deployer, OuterSet.address);
+  await deployInnerMajoritySet(deployer, OuterSet.address);
 }
 
-function deployParity(deployer) {
-  return deployInnerMajoritySet(deployer, genesisOuterSetAddress);
+async function deployParity(deployer) {
+  await deployInnerMajoritySet(deployer, genesisOuterSetAddress);
 }
 
 const networkDeployers = {
