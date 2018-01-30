@@ -4,7 +4,7 @@ import "./interfaces/ValidatorSet.sol";
 
 contract OuterSet is ValidatorSet {
     // System address, used by the block sealer.
-    address constant SYSTEM_ADDRESS = 0xffffFFFfFFffffffffffffffFfFFFfffFFFfFFfE;
+    address public systemAddress;
     // `getValidators()` method signature.
     // bytes4 constant SIGNATURE = 0xb7ab4db5;
 
@@ -27,11 +27,13 @@ contract OuterSet is ValidatorSet {
     }
 
     function OuterSet(address innerSetInitial) public {
-        if (msg.sender == 0) {
+        if (msg.sender == 0) { // this is deployed as part of the genesis block
             // Set original owner here!
             owner = 0xfC4C1475C4DaBfcBB49dc2138337F9db8eedfF58;
-        } else {
+            systemAddress = 0xffffFFFfFFffffffffffffffFfFFFfffFFFfFFfE;
+        } else { // this is deployed as part of a test
             owner = msg.sender;
+            systemAddress = msg.sender;
         }
 
         OwnershipTransferred(0, owner);
@@ -60,12 +62,14 @@ contract OuterSet is ValidatorSet {
     }
 
     modifier onlyOwnerAndFinalized() {
-        require(msg.sender == owner && finalized);
+        // require(msg.sender == owner && finalized);
+        require(msg.sender == owner);
+        require(finalized);
         _;
     }
 
     modifier onlySystemAndNotFinalized() {
-        require(msg.sender == SYSTEM_ADDRESS && !finalized);
+        require(msg.sender == systemAddress && !finalized);
         _;
     }
 

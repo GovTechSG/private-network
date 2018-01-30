@@ -19,9 +19,10 @@ function deployInnerMajoritySet(deployer, outerSetAddress) {
 async function deployDevelopment(deployer) {
   await deployer
     .deploy(InnerSetInitial)
-    .then(() => deployer.deploy(OuterSet, InnerSetInitial.address));
-
-  await deployInnerMajoritySet(deployer, OuterSet.address);
+    .then(() => deployer.deploy(OuterSet, InnerSetInitial.address))
+    .then(() => OuterSet.deployed())
+    .then((outerSet) => outerSet.finalizeChange())
+    .then(() => deployInnerMajoritySet(deployer, OuterSet.address));
 }
 
 async function deployParity(deployer) {
