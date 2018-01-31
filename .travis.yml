@@ -1,0 +1,14 @@
+sudo: required
+
+language: generic
+
+services:
+  - docker
+
+before_install:
+  - docker-compose up -d -f docker-compose.ci.yml
+  - docker-compose ps
+  - docker ps -a
+
+script:
+  - docker-compose -f docker-compose.ci.yml exec truffle yarn run test:ci
