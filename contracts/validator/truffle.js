@@ -3,7 +3,8 @@ module.exports = {
     development: {
       host: "127.0.0.1",
       port: 8545,
-      network_id: "*" // Match any network id
+      network_id: "*", // Match any network id
+      gas: 4600000
     },
     parity_master: {
       // test parity client master
@@ -28,6 +29,12 @@ module.exports = {
       host: "127.0.0.1",
       port: 8548,
       network_id: "16962"
+    },
+    docker_ci: {
+      host: "ganache",
+      port: 8545,
+      network_id: "1337",
+      gas: 4600000
     }
   }
 };

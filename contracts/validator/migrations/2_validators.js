@@ -11,7 +11,8 @@ function deployInnerMajoritySet(deployer, outerSetAddress) {
     .then(() => deployer.link(AddressVotes, InnerMajortiySet))
     .then(() => deployer.deploy(InnerMajortiySet, outerSetAddress))
     .then(() => OuterSet.at(outerSetAddress))
-    .then(instance => instance.setInner(InnerMajortiySet.address));
+    .then(instance => instance.setInner(InnerMajortiySet.address))
+    .catch(err => console.error(err)); // eslint-disable-line
 }
 
 // In a development environment, we need to deploy `OuterSet` manually.
@@ -21,7 +22,7 @@ async function deployDevelopment(deployer) {
     .deploy(InnerSetInitial)
     .then(() => deployer.deploy(OuterSet, InnerSetInitial.address))
     .then(() => OuterSet.deployed())
-    .then((outerSet) => outerSet.finalizeChange())
+    .then(outerSet => outerSet.finalizeChange())
     .then(() => deployInnerMajoritySet(deployer, OuterSet.address));
 }
 
@@ -31,6 +32,7 @@ async function deployParity(deployer) {
 
 const networkDeployers = {
   development: deployDevelopment,
+  docker_ci: deployDevelopment,
   parity_master: deployParity,
   parity_authority1: () => {},
   parity_authority2: () => {},

@@ -5,9 +5,11 @@
   "license": "MIT",
   "scripts": {
     "solium": "solium",
-    "lint": "yarn run lint-sol && yarn run eslint",
-    "lint-sol": "solium -d contracts/",
-    "eslint": "eslint . --ext .js --ext .jsx"
+    "lint": "yarn run lint:sol && yarn run eslint",
+    "lint:sol": "solium -d contracts/",
+    "eslint": "eslint . --ext .js --ext .jsx",
+    "test": "truffle test --network development",
+    "test:ci": "truffle test --network docker_ci"
   },
   "dependencies": {
     "babel-eslint": "^8.2.1",
