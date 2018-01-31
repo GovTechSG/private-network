@@ -1,3 +1,5 @@
+const assertRevert = require("./helpers/assertRevert").default;
+
 const OuterSet = artifacts.require("OuterSet");
 
 contract("OuterSet", accounts => {
@@ -36,6 +38,25 @@ contract("OuterSet", accounts => {
         assert.equal(logs[0].args.newOwner, accounts[0]);
         done();
       });
+    });
+  });
+
+  describe("transferOwnership", () => {
+    it("can transfer ownership", async () => {
+      const newOwner = "0x0000000000000000000000000000000000001337";
+      const currentOwner = await set.owner.call();
+      await set.transferOwnership.sendTransaction(newOwner, {
+        from: currentOwner
+      });
+      const actual = await set.owner.call();
+      assert.equal(actual, newOwner);
+    });
+
+    it("should prevent transferOwnership from non-owners", async () => {
+      const notOwner = accounts[2];
+      const owner = await set.owner();
+      assert.notEqual(notOwner, owner);
+      await assertRevert(set.transferOwnership(notOwner, { from: notOwner }));
     });
   });
 });
