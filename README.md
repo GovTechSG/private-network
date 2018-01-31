@@ -1,5 +1,7 @@
 # Parity POA Network
 
+[![Build Status](https://travis-ci.org/GovTechSG/private-network.svg?branch=master)](https://travis-ci.org/GovTechSG/private-network)
+
 This is an example implementation of
 [Proof of Authority](https://paritytech.github.io/wiki/Proof-of-Authority-Chains)
 consesus network as implemented by the [Parity](https://github.com/paritytech/parity) Ethereum
