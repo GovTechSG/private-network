@@ -39,6 +39,9 @@ contract OuterSet is ValidatorSet {
         OwnershipTransferred(0, owner);
 
         if (innerSetInitial == 0) {
+            // HACK: Hardcode address when in genesis block
+            // Maybe not safe to use this address
+            // Parity minimum address is 5?
             innerSet = InnerSet(0x0000000000000000000000000000000000000006);
         } else {
             innerSet = InnerSet(innerSetInitial);
