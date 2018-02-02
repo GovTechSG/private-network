@@ -34,6 +34,7 @@ contract OuterSet is ValidatorSet {
         } else { // this is deployed as part of a test
             owner = msg.sender;
             systemAddress = msg.sender;
+            finalized = true; // Parity calls finalization on the contract initially
         }
 
         OwnershipTransferred(0, owner);

@@ -1,15 +1,16 @@
 const assertRevert = require("./helpers/assertRevert").default;
 
 const OuterSet = artifacts.require("OuterSet");
+const InnerMajoritySet = artifacts.require("InnerMajoritySet");
 
 contract("OuterSet", accounts => {
   let set;
 
-  beforeEach(async () => {
-    set = await OuterSet.new();
-  });
-
   describe("constructor", () => {
+    beforeEach(async () => {
+      set = await OuterSet.new();
+    });
+
     it("sets the owner", async () => {
       const owner = await set.owner.call();
       assert.equal(owner, accounts[0]);
@@ -42,6 +43,10 @@ contract("OuterSet", accounts => {
   });
 
   describe("transferOwnership", () => {
+    beforeEach(async () => {
+      set = await OuterSet.new();
+    });
+
     it("can transfer ownership", async () => {
       const newOwner = "0x0000000000000000000000000000000000001337";
       const currentOwner = await set.owner.call();
@@ -57,6 +62,36 @@ contract("OuterSet", accounts => {
       const owner = await set.owner();
       assert.notEqual(notOwner, owner);
       await assertRevert(set.transferOwnership(notOwner, { from: notOwner }));
+    });
+  });
+
+  describe("setInner", () => {
+    beforeEach(async () => {
+      set = await OuterSet.deployed();
+    });
+
+    it("sets a new innerSet", async () => {
+      const newInnerSet = await InnerMajoritySet.new(set.address);
+      const newAddr = newInnerSet.address;
+
+      await set.setInner(newAddr);
+
+      const newInner = await set.innerSet();
+      assert.equal(newInner, newAddr);
+    });
+  });
+
+  describe("getValidators", () => {
+    beforeEach(async () => {
+      set = await OuterSet.deployed();
+    });
+
+    it("gets the list of validators", async () => {
+      await OuterSet.deployed()
+        .then(i => i.getValidators())
+        .then(vs => {
+          assert.equal(vs.length, 3);
+        });
     });
   });
 });
