@@ -2,7 +2,7 @@ const OuterSet = artifacts.require("OuterSet");
 const InnerMajoritySet = artifacts.require("InnerMajoritySet");
 // const { BigNumber } = require("web3");
 
-contract("InnerMajoritySet", accounts => {
+contract("InnerMajoritySet", () => {
   const initialValidators = [
     "0xfc4c1475c4dabfcbb49dc2138337f9db8eedff58",
     "0xa2557ab1f214600a7ad1fa12fcad0c97135eeea6",
