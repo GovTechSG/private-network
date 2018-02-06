@@ -14,6 +14,7 @@ import {
   routerMiddleware,
   routerReducer
 } from "react-router-redux";
+import Web3 from "web3";
 
 import App from "@src/components/App";
 import reducers from "@src/reducers";
@@ -29,8 +30,14 @@ import styled from "react-emotion";
 declare global {
   interface Window {
     __REDUX_DEVTOOLS_EXTENSION_COMPOSE__: any;
+    w3: Web3;
   }
 }
+
+// TODO: Figure out how to handle this
+const url = new URL(window.location.href);
+const endpoint = url.searchParams.get("a") || "http://127.0.0.1:8545";
+window.w3 = new Web3(new Web3.providers.HttpProvider(endpoint));
 
 // Redux devtools are still enabled in production!
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__

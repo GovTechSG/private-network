@@ -4,6 +4,7 @@ export interface CountersState {
 
 export interface NodesState {
   nodes: any[];
+  innerSetAddress: string;
 }
 
 export interface Contract {
@@ -28,7 +29,9 @@ export enum ActionTypes {
   DECREMENT = "DECREMENT",
   REPORT_BENIGN = "REPORT_BENIGN",
   REPORT_MALICIOUS = "REPORT_MALICIOUS",
-  GET_VALIDATORS = "GET_VALIDATORS"
+  GET_VALIDATORS = "GET_VALIDATORS",
+  GET_SUPPORT = "GET_SUPPORT",
+  GET_INNER_SET_ADDRESS = "GET_INNER_SET_ADDRESS"
 }
 
 export interface IncrementAction {
@@ -56,9 +59,22 @@ export interface GetValidatorsAction {
   type: ActionTypes.GET_VALIDATORS;
 }
 
+export interface GetSupportAction {
+  address: string;
+  type: ActionTypes.GET_SUPPORT;
+  value: number;
+}
+
+export interface GetInnerSetAddress {
+  address: string;
+  type: ActionTypes.GET_INNER_SET_ADDRESS;
+}
+
 export type Action =
   | IncrementAction
   | DecrementAction
   | ReportBenignAction
   | ReportMaliciousAction
-  | GetValidatorsAction;
+  | GetValidatorsAction
+  | GetSupportAction
+  | GetInnerSetAddress;
