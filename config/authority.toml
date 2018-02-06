@@ -16,6 +16,8 @@ bootnodes = [
 
 [rpc]
 interface = "0.0.0.0"
+cors = ["http://localhost:8080/"]
+hosts = ["all"]
 apis = ["web3", "eth", "net", "personal", "parity", "parity_set", "traces", "rpc", "parity_accounts"]
 
 [mining]
