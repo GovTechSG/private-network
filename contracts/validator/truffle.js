@@ -10,7 +10,9 @@ module.exports = {
       // test parity client master
       host: "127.0.0.1",
       port: 8545,
-      network_id: "16962"
+      network_id: "16962",
+      gasLimit: 4600000,
+      gas: 4600000
     },
     parity_authority1: {
       // test parity client master

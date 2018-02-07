@@ -4,6 +4,7 @@ import styled, { keyframes } from "react-emotion";
 import { Link, Route } from "react-router-dom";
 
 import Echo from "@src/components/Echo";
+import Chain from "@src/containers/Chain";
 import Counter from "@src/containers/Counter";
 import Nodes from "@src/containers/Nodes";
 
@@ -49,6 +50,7 @@ export default class App extends React.Component<AppProps, {}> {
     return (
       <ThemeProvider theme={theme}>
         <div className="app">
+          <Chain />
           <Nodes />
 
           {/* React style prop is still available */}

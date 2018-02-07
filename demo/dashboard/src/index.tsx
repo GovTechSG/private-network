@@ -17,7 +17,9 @@ import {
 import Web3 from "web3";
 
 import App from "@src/components/App";
+import Dashboard from "@src/components/Dashboard";
 import reducers from "@src/reducers";
+import { subscribeAll } from "@src/subscriptions/eth";
 
 // CSS escape hatch: name files with myfile.legacy.css
 const legacyCss = require("./styles/style.legacy.css");
@@ -31,13 +33,15 @@ declare global {
   interface Window {
     __REDUX_DEVTOOLS_EXTENSION_COMPOSE__: any;
     w3: Web3;
+    store: any;
   }
 }
 
-// TODO: Figure out how to handle this
+// TODO: Figure out how to move this into state
 const url = new URL(window.location.href);
-const endpoint = url.searchParams.get("a") || "http://127.0.0.1:8545";
-window.w3 = new Web3(new Web3.providers.HttpProvider(endpoint));
+const endpointWs = url.searchParams.get("w") || "ws://127.0.0.1:9545";
+window.w3 = new Web3(new Web3.providers.WebsocketProvider(endpointWs));
+subscribeAll();
 
 // Redux devtools are still enabled in production!
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
@@ -58,18 +62,15 @@ const store = createStore(
   appReducer,
   composeEnhancers(applyMiddleware(...middleware))
 );
-
-// Example of extending extra props on library components
-interface MyRouteProps extends RouteProps {
-  unusedProp: string;
-}
-class MyRoute extends Route<MyRouteProps> {}
+// HACK for subscribers to dispatch actions on events
+window.store = store;
 
 ReactDOM.render(
   <Provider store={store}>
     <ConnectedRouter history={history}>
       <div>
-        <MyRoute path="/" component={App} unusedProp="unused" />
+        <Route exact path="/" component={App} />
+        <Route path="/dashboard" component={Dashboard} />
       </div>
     </ConnectedRouter>
   </Provider>,

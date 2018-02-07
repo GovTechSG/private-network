@@ -43,3 +43,15 @@ InnerMajoritySet.deployed()
 Do this for the number of validators needed for the vote to pass.
 
 ## Adding a new observer node
+
+---
+
+### Notes
+
+> Error: Contract transaction couldn't be found after 50 blocks
+
+Restart the network, and try again
+
+> JSON RPC returns 0x
+
+Make sure the contract is deployed and correct (ie. not an interface)

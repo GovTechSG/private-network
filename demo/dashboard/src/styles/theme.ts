@@ -12,3 +12,20 @@ export default {
     unused: "red"
   }
 };
+
+export const address = css`
+  font-family: monospace;
+  transition: color 0.1s ease-in;
+`;
+
+export const copy = css`
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: underline;
+  }
+
+  &:active {
+    filter: brightness(150%);
+  }
+`;

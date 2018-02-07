@@ -1,5 +1,5 @@
 import { Contracts } from "@src/contracts";
-import { Action, ActionTypes } from "@src/types";
+import { Action, ActionTypes, GetSupportAction } from "@src/types";
 import { Dispatch } from "redux";
 
 export const increment = (value: number = 1) => ({
@@ -23,23 +23,12 @@ export const incrementAsync = (value: number = 1, delay: number = 1000) => (
 export const reportBenign = () => (dispatch: Dispatch<Action>) =>
   dispatch({ type: ActionTypes.REPORT_BENIGN, address: "what" });
 
-export const reportMalicious = () => (dispatch: Dispatch<Action>) =>
-  dispatch({ type: ActionTypes.REPORT_MALICIOUS, address: "what" });
-
 export const getInnerSetAddress = () => (dispatch: Dispatch<Action>) =>
   Contracts.OuterSet.get()
     .methods.innerSet()
     .call()
     .then((result: any) => {
-      Contracts.InnerMajoritySet.get()
-        .methods.addSupport("0xfC4C1475C4DaBfcBB49dc2138337F9db8eedfF58")
-        .call()
-        .then(() => {
-          Contracts.InnerMajoritySet.get()
-            .methods.getSupport("0xfC4C1475C4DaBfcBB49dc2138337F9db8eedfF58")
-            .call()
-            .then(r => console.log(r));
-        });
+      Contracts.InnerMajoritySet.address = result; // TODO: move into state?
 
       dispatch({
         address: result,
@@ -61,13 +50,12 @@ export const getValidators = () => (dispatch: Dispatch<Action>) =>
     .catch(logError);
 
 export const getSupport = (validatorAddress: string) => (
-  dispatch: Dispatch<Action>
+  dispatch: Dispatch<GetSupportAction>
 ) =>
   Contracts.InnerMajoritySet.get()
     .methods.getSupport(validatorAddress)
     .call()
     .then((result: any) => {
-      console.log("support", result);
       dispatch({
         address: validatorAddress,
         support: result,
@@ -76,6 +64,50 @@ export const getSupport = (validatorAddress: string) => (
       return result;
     })
     .catch(logError);
+
+export const addSupport = (validatorAddress: string) => (
+  dispatch: Dispatch<Action>
+) => {
+  Contracts.InnerMajoritySet.get()
+    .methods.addSupport(validatorAddress)
+    .call()
+    .catch(logError);
+};
+
+export const reportMalicious = (validatorAddress: string) => (
+  dispatch: Dispatch<Action>
+) => {
+  window.w3.eth
+    .getBlockNumber()
+    .then(num =>
+      Contracts.InnerMajoritySet.get()
+        .methods.reportMalicious(
+          validatorAddress,
+          num,
+          "0x0000000000000000000000000000000000000000000000000000000000000000"
+        )
+        .call()
+        .catch(logError)
+    )
+    .catch(logError);
+};
+
+// FIXME: Assuming first account
+export const getAccount = () => (dispatch: Dispatch<Action>) => {
+  window.w3.eth.getAccounts().then(accounts => {
+    dispatch({
+      account: accounts[0],
+      type: ActionTypes.GET_ACCOUNT
+    });
+  });
+};
+
+export const updateBlock = b => ({
+  hash: b.hash,
+  number: b.number,
+  timestamp: b.timestamp,
+  type: ActionTypes.GET_BLOCK
+});
 
 export const getValidatorsWithSupport = () => (dispatch: Dispatch<Action>) =>
   getValidators()(dispatch).then(validatorAddresses =>

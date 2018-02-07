@@ -1,7 +1,7 @@
 import { Action, ActionTypes, NodesState } from "@src/types";
 
 export default (
-  state: NodesState = { nodes: [], innerSetAddress: null },
+  state: NodesState = { nodes: [], account: null, innerSetAddress: null },
   action: Action
 ) => {
   switch (action.type) {
@@ -19,12 +19,17 @@ export default (
         ...state,
         innerSetAddress: action.address
       };
+    case ActionTypes.GET_ACCOUNT:
+      return {
+        ...state,
+        account: action.account
+      };
     case ActionTypes.GET_SUPPORT:
       const newNodes = [...[], ...state.nodes];
 
       const existing = newNodes.find(n => n.address === action.address);
       if (existing) {
-        existing.support = action.value;
+        existing.support = action.support;
       }
 
       return {

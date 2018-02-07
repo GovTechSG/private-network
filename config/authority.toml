@@ -20,6 +20,12 @@ cors = ["http://localhost:8080/", "https://www.myetherwallet.com/"]
 hosts = ["all"]
 apis = ["web3", "eth", "net", "personal", "parity", "parity_set", "traces", "rpc", "parity_accounts"]
 
+[websockets]
+interface = "0.0.0.0"
+origins = ["http://localhost:8080/"]
+apis = ["web3", "eth", "net", "parity", "traces", "rpc", "pubsub", "secretstore"]
+hosts = ["all"]
+
 [mining]
 force_sealing = true
 reseal_on_txs = "all"

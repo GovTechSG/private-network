@@ -1,3 +1,5 @@
+export type Address = string;
+
 export interface CountersState {
   value: number;
 }
@@ -5,11 +7,20 @@ export interface CountersState {
 export interface NodesState {
   nodes: any[];
   innerSetAddress: string;
+  account: Address;
+}
+
+export interface ChainState {
+  current: {
+    hash: string;
+    number: number;
+    timestamp: number;
+  };
 }
 
 export interface Contract {
   abi: any;
-  address: string; // TODO: use an Address object
+  address: Address; // TODO: use an Address object
   json: any;
 }
 
@@ -22,6 +33,7 @@ export interface State {
   counters: CountersState;
   nodes: NodesState;
   provider: ProviderState;
+  chain: ChainState;
 }
 
 export enum ActionTypes {
@@ -31,7 +43,9 @@ export enum ActionTypes {
   REPORT_MALICIOUS = "REPORT_MALICIOUS",
   GET_VALIDATORS = "GET_VALIDATORS",
   GET_SUPPORT = "GET_SUPPORT",
-  GET_INNER_SET_ADDRESS = "GET_INNER_SET_ADDRESS"
+  GET_INNER_SET_ADDRESS = "GET_INNER_SET_ADDRESS",
+  GET_ACCOUNT = "GET_ACCOUNT",
+  GET_BLOCK = "GET_BLOCK"
 }
 
 export interface IncrementAction {
@@ -45,29 +59,41 @@ export interface DecrementAction {
 }
 
 export interface ReportBenignAction {
-  address: string;
+  address: Address;
   type: ActionTypes.REPORT_BENIGN;
 }
 
 export interface ReportMaliciousAction {
-  address: string;
+  address: Address;
   type: ActionTypes.REPORT_MALICIOUS;
 }
 
 export interface GetValidatorsAction {
-  addresses: string[];
+  addresses: Address[];
   type: ActionTypes.GET_VALIDATORS;
 }
 
 export interface GetSupportAction {
-  address: string;
+  address: Address;
   type: ActionTypes.GET_SUPPORT;
-  value: number;
+  support: number;
 }
 
-export interface GetInnerSetAddress {
-  address: string;
+export interface GetInnerSetAddressAction {
+  address: Address;
   type: ActionTypes.GET_INNER_SET_ADDRESS;
+}
+
+export interface GetAccountAction {
+  account: Address;
+  type: ActionTypes.GET_ACCOUNT;
+}
+
+export interface GetBlockAction {
+  hash: string;
+  number: number;
+  timestamp: number;
+  type: ActionTypes.GET_BLOCK;
 }
 
 export type Action =
@@ -77,4 +103,6 @@ export type Action =
   | ReportMaliciousAction
   | GetValidatorsAction
   | GetSupportAction
-  | GetInnerSetAddress;
+  | GetInnerSetAddressAction
+  | GetAccountAction
+  | GetBlockAction;
