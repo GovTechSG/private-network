@@ -11,6 +11,7 @@
   },
   "globals": {
     "assert": false,
+    "assertRevert": false,
     "artifacts": false,
     "contract": false,
     "web3": false

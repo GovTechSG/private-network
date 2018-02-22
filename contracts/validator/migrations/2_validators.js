@@ -22,7 +22,6 @@ async function deployDevelopment(deployer) {
     .deploy(InnerSetInitial)
     .then(() => deployer.deploy(OuterSet, InnerSetInitial.address))
     .then(() => OuterSet.deployed())
-    .then(outerSet => outerSet.finalizeChange())
     .then(() => deployInnerMajoritySet(deployer, OuterSet.address));
 }
 
