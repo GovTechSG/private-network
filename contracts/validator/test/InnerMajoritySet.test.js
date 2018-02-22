@@ -1,6 +1,5 @@
 const OuterSet = artifacts.require("OuterSet");
 const InnerMajoritySet = artifacts.require("InnerMajoritySet");
-// const { BigNumber } = require("web3");
 
 contract("InnerMajoritySet", () => {
   const initialValidators = [
@@ -34,14 +33,17 @@ contract("InnerMajoritySet", () => {
       assert.equal(validatorSet[0], initialValidators[0]);
       assert.equal(validatorSet[1], initialValidators[1]);
       assert.equal(validatorSet[2], initialValidators[2]);
-      assert.equal(
-        validatorSet[3],
-        "0x0000000000000000000000000000000000000000"
-      );
+
+      for (let i = 3; i < 31; i += 1) {
+        assert.equal(
+          validatorSet[3],
+          "0x0000000000000000000000000000000000000000"
+        );
+      }
     });
   });
 
-  describe("addSupport", () => {
+  describe("getSupport", () => {
     it("gets support for a validator", async () => {
       const set = await InnerMajoritySet.deployed();
       const toAddr = initialValidators[1];
