@@ -8,7 +8,7 @@ contract("OuterSet", accounts => {
 
   describe("constructor", () => {
     beforeEach(async () => {
-      set = await OuterSet.new();
+      set = await OuterSet.new(0);
     });
 
     it("sets the owner", async () => {
@@ -44,7 +44,7 @@ contract("OuterSet", accounts => {
 
   describe("transferOwnership", () => {
     beforeEach(async () => {
-      set = await OuterSet.new();
+      set = await OuterSet.new(0);
     });
 
     it("can transfer ownership", async () => {

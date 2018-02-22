@@ -19,7 +19,7 @@ function deployInnerMajoritySet(deployer, outerSetAddress) {
 // `InnerSetInitial` can be skipped
 async function deployDevelopment(deployer) {
   await deployer
-    .deploy(InnerSetInitial)
+    .deploy(InnerSetInitial, 0)
     .then(() => deployer.deploy(OuterSet, InnerSetInitial.address))
     .then(() => OuterSet.deployed())
     .then(() => deployInnerMajoritySet(deployer, OuterSet.address));
