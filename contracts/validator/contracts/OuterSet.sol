@@ -168,24 +168,17 @@ contract InnerSet {
 
 contract InnerSetInitial is InnerSet {
     // Initial set of validator list
-    address[32] public validatorList = [
-        0xfC4C1475C4DaBfcBB49dc2138337F9db8eedfF58,
-        0xa2557aB1F214600A7AD1fA12fCad0C97135eeEA6,
-        0x442290b65483DB5F2520b1E8609Bd3e47fd3F3C4
-    ];
+    address[32] public validatorsList;
     // Number of initial validator list
     uint numberOfValidators = 3;
 
-    function InnerSetInitial(address outerSetAddress) public {
-        if (outerSetAddress == 0) {
-            outerSet = OuterSet(0x0000000000000000000000000000000000000005);
-        } else {
-            outerSet = OuterSet(outerSetAddress);
-        }
+    function InnerSetInitial(address outerSetAddress, address[32] initialValidators) public {
+        outerSet = OuterSet(0x0000000000000000000000000000000000000005);
+        validatorsList = initialValidators;
     }
 
     function getValidators() public constant returns (address[32], uint) {
-        return (validatorList, numberOfValidators);
+        return (validatorsList, numberOfValidators);
     }
 
     function finalizeChange() public { }

@@ -71,7 +71,16 @@ contract("OuterSet", accounts => {
     });
 
     it("sets a new innerSet", async () => {
-      const newInnerSet = await InnerMajoritySet.new(set.address);
+      const initialValidators = [
+        "0xfc4c1475c4dabfcbb49dc2138337f9db8eedff58",
+        "0xa2557ab1f214600a7ad1fa12fcad0c97135eeea6",
+        "0x442290b65483db5f2520b1e8609bd3e47fd3f3c4"
+      ];
+
+      const newInnerSet = await InnerMajoritySet.new(
+        set.address,
+        initialValidators
+      );
       const newAddr = newInnerSet.address;
 
       await set.setInner(newAddr);
