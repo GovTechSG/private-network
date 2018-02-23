@@ -166,11 +166,12 @@ contract InnerSetInitial is InnerSet {
     // Initial set of validator list
     address[32] public validatorsList;
     // Number of initial validator list
-    uint numberOfValidators = 3;
+    uint numberOfValidators;
 
-    function InnerSetInitial(address outerSetAddress, address[32] initialValidators) public {
+    function InnerSetInitial(address outerSetAddress, address[32] initialValidators, uint initialValidatorsSize) public {
         outerSet = OuterSet(0x0000000000000000000000000000000000000005);
         validatorsList = initialValidators;
+        numberOfValidators = initialValidatorsSize;
     }
 
     function getValidators() public constant returns (address[32], uint) {
