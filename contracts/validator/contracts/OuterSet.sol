@@ -26,12 +26,15 @@ contract OuterSet is ValidatorSet {
         _;
     }
 
-    function OuterSet(address innerSetInitial) public {
-        if (msg.sender == 0) { // this is deployed as part of the genesis block
-            // Set original owner here!
-            owner = 0xfC4C1475C4DaBfcBB49dc2138337F9db8eedfF58;
+    // _owner 0 = NOT genesis block
+    function OuterSet(address innerSetInitial, address _owner) public {
+        if (_owner != 0) {
+            // This is deployed as part of the genesis block
+            owner = _owner;
             systemAddress = 0xffffFFFfFFffffffffffffffFfFFFfffFFFfFFfE;
-        } else { // this is deployed as part of a test
+        } else {
+            // TODO: kill off this branch
+            // This is deployed as part of a test
             owner = msg.sender;
             systemAddress = msg.sender;
             finalized = true; // Parity calls finalization on the contract initially
@@ -39,14 +42,7 @@ contract OuterSet is ValidatorSet {
 
         OwnershipTransferred(0, owner);
 
-        if (innerSetInitial == 0) {
-            // HACK: Hardcode address when in genesis block
-            // Maybe not safe to use this address
-            // Parity minimum address is 5?
-            innerSet = InnerSet(0x0000000000000000000000000000000000000006);
-        } else {
-            innerSet = InnerSet(innerSetInitial);
-        }
+        innerSet = InnerSet(innerSetInitial);
     }
 
     /**
@@ -168,24 +164,17 @@ contract InnerSet {
 
 contract InnerSetInitial is InnerSet {
     // Initial set of validator list
-    address[32] public validatorList = [
-        0xfC4C1475C4DaBfcBB49dc2138337F9db8eedfF58,
-        0xa2557aB1F214600A7AD1fA12fCad0C97135eeEA6,
-        0x442290b65483DB5F2520b1E8609Bd3e47fd3F3C4
-    ];
+    address[32] public validatorsList;
     // Number of initial validator list
     uint numberOfValidators = 3;
 
-    function InnerSetInitial(address outerSetAddress) public {
-        if (outerSetAddress == 0) {
-            outerSet = OuterSet(0x0000000000000000000000000000000000000005);
-        } else {
-            outerSet = OuterSet(outerSetAddress);
-        }
+    function InnerSetInitial(address outerSetAddress, address[32] initialValidators) public {
+        outerSet = OuterSet(0x0000000000000000000000000000000000000005);
+        validatorsList = initialValidators;
     }
 
     function getValidators() public constant returns (address[32], uint) {
-        return (validatorList, numberOfValidators);
+        return (validatorsList, numberOfValidators);
     }
 
     function finalizeChange() public { }

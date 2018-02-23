@@ -11,22 +11,15 @@ contract("InnerMajoritySet", () => {
   describe("constructor", () => {
     it("sets the outerSet address", async () => {
       const outer = await OuterSet.deployed();
-      const set = await InnerMajoritySet.new(outer.address);
+      const set = await InnerMajoritySet.new(outer.address, initialValidators);
       const outerAddress = await set.outerSet();
       assert.equal(outer.address, outerAddress);
-    });
-
-    it("sets the outerSet address to 5 if passed in 0", async () => {
-      const set = await InnerMajoritySet.new(0);
-      const outerAddress = await set.outerSet();
-      const expected = "0x0000000000000000000000000000000000000005";
-      assert.equal(expected, outerAddress);
     });
   });
 
   describe("getValidators", () => {
     it("gets the validators", async () => {
-      const set = await InnerMajoritySet.new(0);
+      const set = await InnerMajoritySet.new(0, initialValidators);
       const [validatorSet, length] = await set.getValidators();
 
       assert.equal(length, 3);
@@ -45,9 +38,8 @@ contract("InnerMajoritySet", () => {
 
   describe("getSupport", () => {
     it("gets support for a validator", async () => {
-      const set = await InnerMajoritySet.deployed();
-      const toAddr = initialValidators[1];
-      const initialSupport = await set.getSupport(toAddr);
+      const set = await InnerMajoritySet.new(0, initialValidators);
+      const initialSupport = await set.getSupport(initialValidators[0]);
       assert.equal(initialSupport.toString(), "3");
     });
   });

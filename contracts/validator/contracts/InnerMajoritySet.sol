@@ -59,12 +59,8 @@ contract InnerMajoritySet is InnerSet {
     // Current list of addresses entitled to participate in the consensus.
     address[] public validatorsList;
 
-    // Pending list of validator addresses. Pre-populated with initial addresses
-    address[] pendingList = [
-        0xfC4C1475C4DaBfcBB49dc2138337F9db8eedfF58,
-        0xa2557aB1F214600A7AD1fA12fCad0C97135eeEA6,
-        0x442290b65483DB5F2520b1E8609Bd3e47fd3F3C4
-    ];
+    // Pending list of validator addresses.
+    address[] pendingList;
     // Tracker of status for each address.
     mapping(address => ValidatorStatus) validatorsStatus;
 
@@ -72,12 +68,9 @@ contract InnerMajoritySet is InnerSet {
     AddressVotes.Data initialSupport;
 
     // Each validator is initially supported by all others.
-    function InnerMajoritySet(address outerSetAddress) public {
-        if (outerSetAddress == 0) {
-            outerSet = OuterSet(0x0000000000000000000000000000000000000005);
-        } else {
-            outerSet = OuterSet(outerSetAddress);
-        }
+    function InnerMajoritySet(address outerSetAddress, address[] initialPending) public {
+        outerSet = OuterSet(outerSetAddress);
+        pendingList = initialPending;
 
         initialSupport.count = pendingList.length;
         for (uint i = 0; i < pendingList.length; i++) {
@@ -333,7 +326,7 @@ contract InnerMajoritySet is InnerSet {
     }
 
     modifier isRecent(uint blockNumber) {
-        require(block.number <= blockNumber + RECENT_BLOCKS);
+        require(block.number <= blockNumber + RECENT_BLOCKS); // need to check for overflow?
         _;
     }
 }
