@@ -3,28 +3,24 @@ const assertRevert = require("./helpers/assertRevert").default;
 const OuterSet = artifacts.require("OuterSet");
 const InnerMajoritySet = artifacts.require("InnerMajoritySet");
 
+const masterAddress = "0xfc4c1475c4dabfcbb49dc2138337f9db8eedff58";
+
 contract("OuterSet", accounts => {
   let set;
 
   describe("constructor", () => {
     beforeEach(async () => {
-      set = await OuterSet.new(0);
+      set = await OuterSet.new(0, masterAddress);
     });
 
     it("sets the owner", async () => {
       const owner = await set.owner.call();
-      assert.equal(owner, accounts[0]);
-    });
-
-    it("has a default initial InnerSet in the genesis block", async () => {
-      const expected = "0x0000000000000000000000000000000000000006";
-      const actual = await set.innerSet.call();
-      assert.equal(actual, expected);
+      assert.equal(owner, masterAddress);
     });
 
     it("sets the innerSet when passed in as a parameter", async () => {
       const expected = "0x0000000000000000000000000000000000001337";
-      const testOuterSet = await OuterSet.new(expected);
+      const testOuterSet = await OuterSet.new(expected, 0);
       const actual = await testOuterSet.innerSet.call();
       assert.equal(actual, expected);
     });
@@ -36,7 +32,7 @@ contract("OuterSet", accounts => {
           "0x0000000000000000000000000000000000000000";
         assert.equal(logs.length, 1);
         assert.equal(logs[0].args.previousOwner, expectedPreviousOwner);
-        assert.equal(logs[0].args.newOwner, accounts[0]);
+        assert.equal(logs[0].args.newOwner, masterAddress);
         done();
       });
     });
@@ -44,7 +40,7 @@ contract("OuterSet", accounts => {
 
   describe("transferOwnership", () => {
     beforeEach(async () => {
-      set = await OuterSet.new(0);
+      set = await OuterSet.new(0, 0);
     });
 
     it("can transfer ownership", async () => {
@@ -66,17 +62,14 @@ contract("OuterSet", accounts => {
   });
 
   describe("setInner", () => {
+    const initialValidators = ["0x0000000000000000000000000000000000001337"];
+
     beforeEach(async () => {
-      set = await OuterSet.deployed();
+      const innerSet = await InnerMajoritySet.new(0, initialValidators);
+      set = await OuterSet.new(innerSet.address, 0);
     });
 
     it("sets a new innerSet", async () => {
-      const initialValidators = [
-        "0xfc4c1475c4dabfcbb49dc2138337f9db8eedff58",
-        "0xa2557ab1f214600a7ad1fa12fcad0c97135eeea6",
-        "0x442290b65483db5f2520b1e8609bd3e47fd3f3c4"
-      ];
-
       const newInnerSet = await InnerMajoritySet.new(
         set.address,
         initialValidators
