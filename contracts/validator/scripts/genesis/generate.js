@@ -20,7 +20,7 @@ module.exports = async function generateGenesis(cb) {
         [
           "Use Truffle to generate a genesis JSON file for a Parity PoA network",
           "",
-          "truffle exec scripts/generateGenesis.js -v <addr> -v <addr> --master=<addr> --outer=<addr> --inner=<addr> --validatorsContract=<addr>"
+          "truffle exec scripts/genesis/generate.js -v <addr> -v <addr> --master=<addr> --outer=<addr> --inner=<addr> --validatorsContract=<addr>"
         ].join("\n")
       )
       .version("0.0.1")
