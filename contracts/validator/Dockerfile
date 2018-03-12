@@ -8,3 +8,5 @@ RUN yarn install --frozen-lockfile \
     && yarn cache clean
 
 COPY ./ ./
+
+RUN yarn truffle compile
