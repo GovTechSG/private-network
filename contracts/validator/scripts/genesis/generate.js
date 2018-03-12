@@ -26,8 +26,8 @@ module.exports = async function generateGenesis(cb) {
           "(multiple) addresses of initial validators, repeat option for multiple"
       })
       .option("name", { describe: "network name" })
-      .option("blockReward")
-      .option("stepDuration", { describe: "voting round length" })
+      .option("blockReward", { describe: "in Wei" })
+      .option("stepDuration", { describe: "voting round length in seconds" })
       .option("outer", { demand: true, describe: "outer set contract address" })
       .option("inner", {
         demand: true,
