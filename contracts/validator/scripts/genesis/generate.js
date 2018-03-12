@@ -33,7 +33,6 @@ module.exports = async function generateGenesis(cb) {
         demand: true,
         describe: "initial inner set contract address"
       })
-      .option("validatorsContract", { demand: true })
       .option("networkId", { describe: "network ID" });
 
     const outer = await OuterSet.new(0, argv.master);
@@ -56,7 +55,7 @@ module.exports = async function generateGenesis(cb) {
           params: {
             stepDuration: argv.stepDuration,
             validators: {
-              contract: argv.validatorsContract
+              contract: argv.outer
             },
             blockReward: argv.blockReward
           }
