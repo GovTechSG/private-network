@@ -4,6 +4,8 @@ Generates the Genesis block for Parity development. Requires Truffle.
 
 ```
 truffle exec generate.js --help
+
+yarn generate:genesis <..options>
 ```
 
 ## Example
