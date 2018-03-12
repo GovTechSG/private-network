@@ -18,22 +18,47 @@ module.exports = async function generateGenesis(cb) {
       .version("0.0.1")
       .option("master", {
         demand: true,
-        describe: "address for master account"
+        describe: "address for master account",
+        string: true
       })
       .option("validator", {
         alias: "v",
         describe:
-          "(multiple) addresses of initial validators, repeat option for multiple"
+          "(multiple) addresses of initial validators, repeat option for multiple",
+        string: true
       })
-      .option("name", { describe: "network name" })
-      .option("blockReward", { describe: "in Wei" })
-      .option("stepDuration", { describe: "voting round length in seconds" })
-      .option("outer", { demand: true, describe: "outer set contract address" })
+      .option("name", {
+        describe: "network name",
+        string: true
+      })
+      .option("blockReward", {
+        describe: "in Wei",
+        string: true
+      })
+      .option("stepDuration", {
+        describe: "voting round length in seconds",
+        string: true
+      })
+      .option("outer", {
+        demand: true,
+        describe: "outer set contract address",
+        string: true
+      })
       .option("inner", {
         demand: true,
-        describe: "initial inner set contract address"
+        describe: "initial inner set contract address",
+        string: true
       })
-      .option("networkId", { describe: "network ID" });
+      .option("networkId", {
+        describe: "network ID",
+        string: true
+      })
+      .option("stderr", {
+        describe: "print to stderr instead of stdout",
+        default: false
+      });
+
+    const output = argv.stderr ? console.error : console.log; // eslint-disable-line
 
     const outer = await OuterSet.new(0, argv.master);
     const initial = await InnerSetInitial.new(0, [].concat(argv.validator));
@@ -69,7 +94,7 @@ module.exports = async function generateGenesis(cb) {
 
     // Deep merge
     const result = _.merge({}, template, options);
-    console.log(JSON.stringify(result, null, 2)); // eslint-disable-line
+    output(JSON.stringify(result, null, 2)); // eslint-disable-line
   } catch (e) {
     cb(e);
     return;
