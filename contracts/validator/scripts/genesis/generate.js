@@ -49,7 +49,7 @@ module.exports = async function generateGenesis(cb) {
         describe: "initial inner set contract address",
         string: true
       })
-      .option("networkId", {
+      .option("networkID", {
         describe: "network ID",
         string: true
       })
