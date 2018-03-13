@@ -168,8 +168,7 @@ contract InnerSetInitial is InnerSet {
     // Number of initial validator list
     uint numberOfValidators;
 
-    function InnerSetInitial(address outerSetAddress, address[32] initialValidators, uint initialValidatorsSize) public {
-        outerSet = OuterSet(0x0000000000000000000000000000000000000005);
+    function InnerSetInitial(address[32] initialValidators, uint initialValidatorsSize) public {
         validatorsList = initialValidators;
         numberOfValidators = initialValidatorsSize;
     }

@@ -29,29 +29,35 @@ module.exports = async function generateGenesis(cb) {
       })
       .option("name", {
         describe: "network name",
-        string: true
+        string: true,
+        default: "DemoPoA"
       })
       .option("blockReward", {
         describe: "in Wei",
-        string: true
+        string: true,
+        default: "0x4563918244F40000"
       })
       .option("stepDuration", {
         describe: "voting round length in seconds",
-        string: true
+        string: true,
+        default: "5"
       })
       .option("outer", {
         demand: true,
         describe: "outer set contract address",
-        string: true
+        string: true,
+        default: "0x0000000000000000000000000000000000000005"
       })
       .option("inner", {
         demand: true,
         describe: "initial inner set contract address",
-        string: true
+        string: true,
+        default: "0x0000000000000000000000000000000000000006"
       })
       .option("networkID", {
         describe: "network ID",
-        string: true
+        string: true,
+        default: "0x4242"
       })
       .option("stderr", {
         describe: "print to stderr instead of stdout",
@@ -60,17 +66,23 @@ module.exports = async function generateGenesis(cb) {
 
     const output = argv.stderr ? console.error : console.log; // eslint-disable-line
 
-    const outer = await OuterSet.new(0, argv.master);
-    const initial = await InnerSetInitial.new(0, [].concat(argv.validator));
+    const outer = await OuterSet.new(argv.inner, argv.master);
+    const outerTransaction = outer.contract.transactionHash;
+
+    const initial = await InnerSetInitial.new(
+      [].concat(argv.validator),
+      argv.validator.length
+    );
+    const initialTransaction = initial.contract.transactionHash;
 
     const accounts = {};
     accounts[argv.outer] = {
       balance: 1,
-      constructor: outer.constructor.bytecode
+      constructor: web3.eth.getTransaction(outerTransaction).input
     };
     accounts[argv.inner] = {
       balance: 1,
-      constructor: initial.constructor.bytecode
+      constructor: web3.eth.getTransaction(initialTransaction).input
     };
 
     const options = {
