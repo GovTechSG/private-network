@@ -67,16 +67,19 @@ module.exports = async function generateGenesis(cb) {
     const output = argv.stderr ? console.error : console.log; // eslint-disable-line
 
     const outer = await OuterSet.new(argv.inner, argv.master);
-    const initial = await InnerSetInitial.new(0, [].concat(argv.validator), argv.validator.length);
+    const outerTransaction = outer.contract.transactionHash;
+
+    const initial = await InnerSetInitial.new([].concat(argv.validator), argv.validator.length);
+    const initialTransaction = initial.contract.transactionHash;
 
     const accounts = {};
     accounts[argv.outer] = {
       balance: 1,
-      constructor: outer.constructor.bytecode
+      constructor: web3.eth.getTransaction(outerTransaction).input
     };
     accounts[argv.inner] = {
       balance: 1,
-      constructor: initial.constructor.bytecode
+      constructor: web3.eth.getTransaction(initialTransaction).input
     };
 
     const options = {
