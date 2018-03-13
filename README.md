@@ -9,10 +9,25 @@ client. The validator set is backed by a smart contract.
 
 ## Running
 
-- Decrypt the secrets?
-
 ```bash
 docker-compose up
+```
+
+## Generating the Genesis block from the contracts
+
+For example, to generate a new genesis block from the edited source code using the pre-setup accounts,
+we can run:
+
+```bash
+cd contracts/validator/
+yarn --silent generate:genesis \
+    --master 0xfC4C1475C4DaBfcBB49dc2138337F9db8eedfF58 \
+    -v 0xfC4C1475C4DaBfcBB49dc2138337F9db8eedfF58 \
+    -v 0xa2557aB1F214600A7AD1fA12fCad0C97135eeEA6 \
+    -v 0x442290b65483DB5F2520b1E8609Bd3e47fd3F3C4 \
+    --stderr \
+    2> ../../config/demo_poa.json
+
 ```
 
 ## Nodes Description
