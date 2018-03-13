@@ -60,8 +60,8 @@ module.exports = async function generateGenesis(cb) {
 
     const output = argv.stderr ? console.error : console.log; // eslint-disable-line
 
-    const outer = await OuterSet.new(0, argv.master);
-    const initial = await InnerSetInitial.new(0, [].concat(argv.validator));
+    const outer = await OuterSet.new(argv.inner, argv.master);
+    const initial = await InnerSetInitial.new(0, [].concat(argv.validator), argv.validator.length);
 
     const accounts = {};
     accounts[argv.outer] = {
