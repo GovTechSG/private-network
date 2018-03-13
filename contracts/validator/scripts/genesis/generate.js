@@ -30,7 +30,7 @@ module.exports = async function generateGenesis(cb) {
       .option("name", {
         describe: "network name",
         string: true,
-        default:"DemoPoA"
+        default: "DemoPoA"
       })
       .option("blockReward", {
         describe: "in Wei",
@@ -69,7 +69,10 @@ module.exports = async function generateGenesis(cb) {
     const outer = await OuterSet.new(argv.inner, argv.master);
     const outerTransaction = outer.contract.transactionHash;
 
-    const initial = await InnerSetInitial.new([].concat(argv.validator), argv.validator.length);
+    const initial = await InnerSetInitial.new(
+      [].concat(argv.validator),
+      argv.validator.length
+    );
     const initialTransaction = initial.contract.transactionHash;
 
     const accounts = {};

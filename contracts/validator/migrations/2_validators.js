@@ -5,8 +5,6 @@ const AddressVotes = artifacts.require("./libraries/AddressVotes.sol");
 
 const genesisOuterSetAddress = "0x0000000000000000000000000000000000000005";
 
-const masterAddress = "0xfC4C1475C4DaBfcBB49dc2138337F9db8eedfF58";
-
 const parityInitialValidators = [
   "0xfC4C1475C4DaBfcBB49dc2138337F9db8eedfF58",
   "0xa2557aB1F214600A7AD1fA12fCad0C97135eeEA6",
@@ -28,16 +26,13 @@ function deployInnerMajoritySet(deployer, outerSetAddress, initialPending) {
 // `InnerSetInitial` can be skipped
 async function deployDevelopment(deployer, _network, accounts) {
   await deployer
-    .deploy(
-      InnerSetInitial,
-      accounts.slice(0, 3),
-      3
-    )
-    .then(() =>
-      deployer.deploy(OuterSet, InnerSetInitial.address, 0)
-    )
+    // Arbitrary decision to use only three accounts. Otherwise we will run out of gas.
+    .deploy(InnerSetInitial, accounts.slice(0, 3), 3)
+    .then(() => deployer.deploy(OuterSet, InnerSetInitial.address, 0))
     .then(() => OuterSet.deployed())
-    .then(() => deployInnerMajoritySet(deployer, OuterSet.address, accounts.slice(0, 3)));
+    .then(() =>
+      deployInnerMajoritySet(deployer, OuterSet.address, accounts.slice(0, 3))
+    );
 }
 
 async function deployParity(deployer, _network, _accounts) {
