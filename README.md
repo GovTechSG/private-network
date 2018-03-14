@@ -4,7 +4,7 @@
 
 This is an example implementation of
 [Proof of Authority](https://paritytech.github.io/wiki/Proof-of-Authority-Chains)
-consesus network as implemented by the [Parity](https://github.com/paritytech/parity) Ethereum
+consensus network as implemented by the [Parity](https://github.com/paritytech/parity) Ethereum
 client. The validator set is backed by a smart contract.
 
 ## Contracts
@@ -43,7 +43,7 @@ The [repository](https://github.com/GovTechSG/private-network-automated) contain
 instructions on how the process can be automated. We recommend that you use these scripts instead
 of doing anything manually.
 
-Some of the manual steps are documented below, but for most other ommitted steps, we recommend
+Some of the manual steps are documented below, but for most other omitted steps, we recommend
 that you refer to our automated setup for more information.
 
 ### Generating Ethereum key pairs
@@ -58,7 +58,7 @@ geth account new --keystore /path/to/output/directory
 
 ### Generating a chain specification
 
-The chain spoecification contains the initial contracts bytecode. For the full set of paremeters,
+The chain specification contains the initial contracts bytecode. For the full set of parameters,
 run `yarn generate:genesis --help` in the `contracts/validator` directory.
 
 ```bash
@@ -116,5 +116,5 @@ Do this for the number of validators needed for the vote to pass.
 added to the network via the use of additional contracts:
 
 - Joining the network: This will allow a truly private network where only approved nodes will even be able to join the network to receive gossip and transaction details.
-- Posting transactions: This will allow whitelisting of accounts that will be able to post transactions. This allows the creation of a "read-only" public network. Only privately approved members will be able to post transaction.
-- Zero gas price posting: If used with permissioned transaction posting, this allows the network to be rid of the "Ether" currency as a concept.
+- Posting transactions: This will allow white-listing of accounts that will be able to post transactions. This allows the creation of a "read-only" public network. Only privately approved members will be able to post transaction.
+- Zero gas price posting: If used with permission-less transaction posting, this allows the network to be rid of the "Ether" currency as a concept.
