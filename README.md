@@ -73,6 +73,13 @@ yarn --silent generate:genesis \
 
 ```
 
+### Writing the Parity configuration files
+
+You should refer to the [documentation](https://wiki.parity.io/Configuring-Parity) for more details.
+In particular, you would need to specify a set of initial "boot nodes" that clients will connect to.
+To find out more about generating the "enode" IDs, you can refer to
+[this section](https://github.com/GovTechSG/private-network-automated/blob/master/setup/README.md#about-enode-id).
+
 ## Type of nodes
 
 - Validator/Authority Nodes: Nodes that will validate transactions and mint new blocks. They essentially maintain the security of the network.
@@ -111,3 +118,4 @@ added to the network via the use of additional contracts:
 - Joining the network: This will allow a truly private network where only approved nodes will even be able to join the network to receive gossip and transaction details.
 - Posting transactions: This will allow whitelisting of accounts that will be able to post transactions. This allows the creation of a "read-only" public network. Only privately approved members will be able to post transaction.
 - Zero gas price posting: If used with permissioned transaction posting, this allows the network to be rid of the "Ether" currency as a concept.
+authority node after network is setup
