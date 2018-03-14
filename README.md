@@ -7,19 +7,62 @@ This is an example implementation of
 consesus network as implemented by the [Parity](https://github.com/paritytech/parity) Ethereum
 client. The validator set is backed by a smart contract.
 
-## Running
+## Contracts
+
+The directory `contracts/validator` contains the contracts used to manage a set of Validator nodes
+for the network. This set of contracts was based off the examples provided by
+[Parity](https://github.com/paritytech/contracts/blob/master/validator_contracts).
+
+The validator contract uses an upgradeable contract model, where there is an `Outer` contract
+facade, or interface, that the Parity client will interact with. The job of the facade is to
+redirect calls to an `Inner` contract, or the implementation.
+
+In the future, the `contracts` directory will contain additional contracts to run the other
+permissions that are supported by the Parity client. See the "Future Work" section below.
+
+## Running the demo
+
+The demo is set up with some "pre-baked" keys and accounts. _DO NOT_ use them in production. You can
+use Docker and Docker Compose to run the network simply with:
 
 ```bash
 docker-compose up
 ```
 
-## Generating the Genesis block from the contracts
+## Setting up a new network
 
-For example, to generate a new genesis block from the edited source code using the pre-setup accounts,
-we can run:
+In order to setup a new network, you will need the following:
+
+- A set of initial Ethereum key pairs that will be used as an initial set of validators,
+- A [chain specification](https://wiki.parity.io/Chain-specification) defining the parameters of the Proof of Authority chains used, along with the genesis block containing the initial accounts and contracts.
+- Parity configuration to make use of the chain specification.
+
+### Automatic setup
+
+The [repository](https://github.com/GovTechSG/private-network-automated) contains the scripts and
+instructions on how the process can be automated. We recommend that you use these scripts instead
+of doing anything manually.
+
+Some of the manual steps are documented below, but for most other ommitted steps, we recommend
+that you refer to our automated setup for more information.
+
+### Generating Ethereum key pairs
+
+You should use [geth](https://github.com/ethereum/go-ethereum) to generate new accounts.
+
+For example:
 
 ```bash
-cd contracts/validator/
+geth account new --keystore /path/to/output/directory
+```
+
+### Generating a chain specification
+
+The chain spoecification contains the initial contracts bytecode. For the full set of paremeters,
+run `yarn generate:genesis --help` in the `contracts/validator` directory.
+
+```bash
+cd contracts/validator
 yarn --silent generate:genesis \
     --master 0xfC4C1475C4DaBfcBB49dc2138337F9db8eedfF58 \
     -v 0xfC4C1475C4DaBfcBB49dc2138337F9db8eedfF58 \
@@ -30,16 +73,17 @@ yarn --silent generate:genesis \
 
 ```
 
-## Nodes Description
+## Type of nodes
 
-Master node vs Authority node
-"Observer" nodes
+- Validator/Authority Nodes: Nodes that will validate transactions and mint new blocks. They essentially maintain the security of the network.
+- Master Node: A master node is simply a validator block with the additional responsibility of owning the validator contract. Ownership can be transferred to others.
+- Observer nodes: Nodes that are not validators. They can join the network to observer transactions or to post transactions of their own.
 
-## Adding a new initial authority node
+## Post setup tasks
 
-## Deploy and use new `InnerSet` contracts
+### Replace `InnerSet` contract
 
-## Adding a new authority node after network is setup
+### Adding a new validator node
 
 First, you would have to setup a new authority node as if it was an initial authority node, except
 you don't add its address into the `InnerSetInitial` contract.
@@ -57,4 +101,13 @@ InnerMajoritySet.deployed()
 
 Do this for the number of validators needed for the vote to pass.
 
-## Adding a new observer node
+### Adding a new observer node
+
+## Future Work
+
+[Additional permissions](https://wiki.parity.io/Permissioning) can be
+added to the network via the use of additional contracts:
+
+- Joining the network: This will allow a truly private network where only approved nodes will even be able to join the network to receive gossip and transaction details.
+- Posting transactions: This will allow whitelisting of accounts that will be able to post transactions. This allows the creation of a "read-only" public network. Only privately approved members will be able to post transaction.
+- Zero gas price posting: If used with permissioned transaction posting, this allows the network to be rid of the "Ether" currency as a concept.
