@@ -83,7 +83,7 @@ To find out more about generating the "enode" IDs, you can refer to
 ## Type of nodes
 
 - Validator/Authority Nodes: Nodes that will validate transactions and mint new blocks. They essentially maintain the security of the network.
-- Master Node: A master node is simply a validator block with the additional responsibility of owning the validator contract. Ownership can be transferred to others.
+- Master Node: A master node is simply a validator node with the additional responsibility of owning the validator contract. Ownership can be transferred to others.
 - Observer nodes: Nodes that are not validators. They can join the network to observer transactions or to post transactions of their own.
 
 ## Post setup tasks
@@ -118,4 +118,3 @@ added to the network via the use of additional contracts:
 - Joining the network: This will allow a truly private network where only approved nodes will even be able to join the network to receive gossip and transaction details.
 - Posting transactions: This will allow whitelisting of accounts that will be able to post transactions. This allows the creation of a "read-only" public network. Only privately approved members will be able to post transaction.
 - Zero gas price posting: If used with permissioned transaction posting, this allows the network to be rid of the "Ether" currency as a concept.
-authority node after network is setup
