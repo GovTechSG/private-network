@@ -5,6 +5,10 @@ const template = require("./genesisTemplate.json");
 const OuterSet = artifacts.require("OuterSet");
 const InnerSetInitial = artifacts.require("InnerSetInitial");
 
+const clearTruffle = () => {
+  process.stdout.write("\r\x1b[A\x1b[A\x1b[2K");
+};
+
 module.exports = async function generateGenesis(cb) {
   try {
     const { argv } = yargs
@@ -62,7 +66,15 @@ module.exports = async function generateGenesis(cb) {
       .option("stderr", {
         describe: "print to stderr instead of stdout",
         default: false
+      })
+      .option("quiet", {
+        describe: "clear Truffle output noise",
+        default: false
       });
+
+    if (argv.quiet) {
+      clearTruffle();
+    }
 
     const output = argv.stderr ? console.error : console.log; // eslint-disable-line
 
