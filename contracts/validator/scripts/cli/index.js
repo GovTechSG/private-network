@@ -1,18 +1,16 @@
 const yargs = require("yargs");
-const _ = require("lodash");
 
 const OuterSet = artifacts.require("OuterSet");
-const InnerSetInitial = artifacts.require("InnerSetInitial");
 const InnerMajoritySet = artifacts.require("InnerMajoritySet");
 const InnerSet = artifacts.require("InnerSet");
 
-const clearScreen = () => {
-  console.log("\x1Bc"); // eslint-disable-line
+const clearTruffle = () => {
+  process.stdout.write("\r\x1b[A\x1b[A\x1b[2K");
 };
 
 const handleInner = async argv => {
-  if (argv.clear) {
-    clearScreen();
+  if (argv.quiet) {
+    clearTruffle();
   }
 
   const outer = await OuterSet.at(argv.outerset);
@@ -39,8 +37,8 @@ const handleInner = async argv => {
 };
 
 const handleValidator = async argv => {
-  if (argv.clear) {
-    clearScreen();
+  if (argv.quiet) {
+    clearTruffle();
   }
 
   const outer = await OuterSet.at(argv.outerset);
@@ -58,7 +56,7 @@ const handleValidator = async argv => {
       console.log(`${await inner.getSupport(argv.address)}`); // eslint-disable-line
       break;
     }
-    case "support": {
+    case "getsupport": {
       const inner = await InnerMajoritySet.at(await outer.innerSet());
       console.log(`${await inner.getSupport(argv.address)}`); // eslint-disable-line
       break;
@@ -74,22 +72,50 @@ const handleValidator = async argv => {
   }
 };
 
+const handleReport = async argv => {
+  if (argv.quiet) {
+    clearTruffle();
+  }
+
+  const outer = await OuterSet.at(argv.outerset);
+  const inner = await InnerMajoritySet.at(await outer.innerSet());
+
+  switch (argv.mode) {
+    case "benign": {
+      await inner.reportBenign(argv.address, web3.eth.blockNumber);
+      console.log(`${await inner.getSupport(argv.address)}`); // eslint-disable-line
+      break;
+    }
+    case "malicious": {
+      await inner.reportMalicious(
+        argv.address,
+        web3.eth.blockNumber,
+        argv.proof
+      );
+      console.log(`${await inner.getSupport(argv.address)}`); // eslint-disable-line
+      break;
+    }
+    default:
+      break;
+  }
+};
+
 module.exports = async function cli(cb) {
   try {
     yargs
-      .option("clear", {
-        description:
-          "clear the screen before printing output (clears truffle noise)",
+      .usage("yarn --silent run cli --help --quiet")
+      .option("quiet", {
+        description: 'silence Truffle "Using network ..."',
         default: false,
         type: "boolean"
       })
       .command({
         command: "inner <action>",
-        description: "interact with inner validator contracts",
+        description: "interact with inner validator set contract",
         builder: _yargs => {
           _yargs
             .choices("action", ["deploy"])
-            .option("outerset", { string: true, default: OuterSet.address })
+            .option("outerset", { default: OuterSet.address })
             .option("validators", {
               description:
                 "list of validators to add. This has to be identical to the *existing* InnerSet",
@@ -105,11 +131,30 @@ module.exports = async function cli(cb) {
         description: "interact with validators",
         builder: _yargs => {
           _yargs
-            .choices("action", ["list", "propose", "support", "addsupport"])
-            .positional("address", { type: "string" })
-            .option("outerset", { string: true, default: OuterSet.address });
+            .choices("action", ["list", "propose", "getsupport", "addsupport"])
+            .positional("address", {
+              type: "string",
+              demand: true,
+              describe: "validator address"
+            })
+            .option("outerset", { default: OuterSet.address });
         },
         handler: handleValidator
+      })
+      .command({
+        command: "report <mode> <address>",
+        description: "report a validator (malicious requires prior support)",
+        builder: _yargs => {
+          _yargs
+            .choices("mode", ["benign", "malicious"])
+            .positional("address", { type: "string", demand: true })
+            .option("proof", {
+              default: "0x0",
+              describe: "proof of maliciousnesses in bytes"
+            })
+            .option("outerset", { default: OuterSet.address });
+        },
+        handler: handleReport
       })
       .string("_")
       .parse(process.argv.slice(4)); // slice out truffle nonsense
