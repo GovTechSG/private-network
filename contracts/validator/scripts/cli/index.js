@@ -28,9 +28,45 @@ const handleInner = async argv => {
       console.log(await outer.innerSet()); // eslint-disable-line
       break;
     }
-    case "validators": {
+    case "list": {
       const [validators, validatorCount] = await inner.getValidators();
       console.log(validators.slice(0, validatorCount).join("\n")); // eslint-disable-line
+      break;
+    }
+    default:
+      break;
+  }
+};
+
+const handleValidator = async argv => {
+  if (argv.clear) {
+    clearScreen();
+  }
+
+  const outer = await OuterSet.at(argv.outerset);
+
+  switch (argv.action) {
+    case "list": {
+      const inner = await InnerSet.at(await outer.innerSet());
+      const [validators, validatorCount] = await inner.getValidators();
+      console.log(validators.slice(0, validatorCount).join("\n")); // eslint-disable-line
+      break;
+    }
+    case "propose": {
+      const inner = await InnerMajoritySet.at(await outer.innerSet());
+      await inner.addValidator(argv.address);
+      console.log(`${await inner.getSupport(argv.address)}`); // eslint-disable-line
+      break;
+    }
+    case "support": {
+      const inner = await InnerMajoritySet.at(await outer.innerSet());
+      console.log(`${await inner.getSupport(argv.address)}`); // eslint-disable-line
+      break;
+    }
+    case "addsupport": {
+      const inner = await InnerMajoritySet.at(await outer.innerSet());
+      await inner.addSupport(argv.address);
+      console.log(`${await inner.getSupport(argv.address)}`); // eslint-disable-line
       break;
     }
     default:
@@ -42,7 +78,8 @@ module.exports = async function cli(cb) {
   try {
     yargs
       .option("clear", {
-        description: "clear the screen before printing output",
+        description:
+          "clear the screen before printing output (clears truffle noise)",
         default: false,
         type: "boolean"
       })
@@ -51,10 +88,11 @@ module.exports = async function cli(cb) {
         description: "interact with inner validator contracts",
         builder: _yargs => {
           _yargs
-            .choices("action", ["deploy", "validators"])
+            .choices("action", ["deploy"])
             .option("outerset", { string: true, default: OuterSet.address })
             .option("validators", {
-              description: "list of validators in the *existing* InnerSet",
+              description:
+                "list of validators to add. This has to be identical to the *existing* InnerSet",
               default: [],
               type: "array",
               string: true
@@ -62,6 +100,18 @@ module.exports = async function cli(cb) {
         },
         handler: handleInner
       })
+      .command({
+        command: "validator <action> [address]",
+        description: "interact with validators",
+        builder: _yargs => {
+          _yargs
+            .choices("action", ["list", "propose", "support", "addsupport"])
+            .positional("address", { type: "string" })
+            .option("outerset", { string: true, default: OuterSet.address });
+        },
+        handler: handleValidator
+      })
+      .string("_")
       .parse(process.argv.slice(4)); // slice out truffle nonsense
   } catch (e) {
     cb(e);
