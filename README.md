@@ -88,7 +88,7 @@ To find out more about generating the "enode" IDs, you can refer to
 
 ## Post setup tasks
 
-In the `contracts/validator` directory, there a CLI tool is included to automate some of the post
+In the `contracts/validator` directory, a CLI tool is included to automate some of the post
 setup tasks that might encounter.
 
 In order to run the CLI, you might have to configure the Ethereum network the CLI will connect to.
