@@ -1,6 +1,7 @@
 const yargs = require("yargs");
 
 const OuterSet = artifacts.require("OuterSet");
+const InnerSetInitial = artifacts.require("InnerSetInitial");
 const InnerMajoritySet = artifacts.require("InnerMajoritySet");
 
 const clearTruffle = () => {
@@ -93,6 +94,29 @@ const handleReport = async argv => {
   }
 };
 
+const handleAddress = async argv => {
+  if (argv.quiet) {
+    clearTruffle();
+  }
+
+  switch (argv.contract) {
+    case "outer": {
+      console.log(`${OuterSet.address}`); // eslint-disable-line
+      break;
+    }
+    case "inner": {
+      console.log(`${InnerMajoritySet.address}`); // eslint-disable-line
+      break;
+    }
+    case "innerinitial": {
+      console.log(`${InnerSetInitial.address}`); // eslint-disable-line
+      break;
+    }
+    default:
+      break;
+  }
+};
+
 module.exports = async function cli(cb) {
   try {
     yargs
@@ -110,8 +134,7 @@ module.exports = async function cli(cb) {
             .positional("action", {
               choices: ["deploy"],
               description:
-                "Action to peform \n - deploy: Deploy and upgrade the InnerSet contract",
-              type: "string"
+                "Action to peform \n - deploy: Deploy and upgrade the InnerSet contract"
             })
             .option("outerset", {
               requiresArg: true,
@@ -139,7 +162,6 @@ module.exports = async function cli(cb) {
           _yargs
             .positional("action", {
               choices: ["list", "propose", "getsupport", "addsupport"],
-              type: "string",
               description:
                 "Action to perform\n" +
                 "- list: List the current validators\n" +
@@ -167,8 +189,7 @@ module.exports = async function cli(cb) {
           _yargs
             .positional("mode", {
               choices: ["benign", "malicious"],
-              description: "The type of report to make",
-              string: true
+              description: "The type of report to make"
             })
             .positional("address", { type: "string", demand: true })
             .option("proof", {
@@ -182,6 +203,18 @@ module.exports = async function cli(cb) {
             });
         },
         handler: handleReport
+      })
+      .command({
+        command: "address <contract>",
+        description:
+          "Retrieve the deployed versions of the contracts as stored in the Truffle artifacts",
+        builder: _yargs => {
+          _yargs.positional("contract", {
+            choices: ["outer", "inner", "innerinitial"],
+            description: "The contract to get the address of."
+          });
+        },
+        handler: handleAddress
       })
       .string("_")
       .parse(process.argv.slice(4)); // slice out truffle nonsense
