@@ -2,7 +2,6 @@ const yargs = require("yargs");
 
 const OuterSet = artifacts.require("OuterSet");
 const InnerMajoritySet = artifacts.require("InnerMajoritySet");
-const InnerSet = artifacts.require("InnerSet");
 
 const clearTruffle = () => {
   process.stdout.write("\r\x1b[A\x1b[A\x1b[2K");
@@ -14,21 +13,16 @@ const handleInner = async argv => {
   }
 
   const outer = await OuterSet.at(argv.outerset);
-  const inner = await InnerSet.at(await outer.innerSet());
 
   switch (argv.action) {
     case "deploy": {
-      const newInner = await InnerMajoritySet.new(
-        outer.address,
-        argv.validators
-      );
+      const validators = argv.copy
+        ? await outer.getValidators()
+        : argv.validators;
+
+      const newInner = await InnerMajoritySet.new(outer.address, validators);
       outer.setInner(newInner.address);
       console.log(await outer.innerSet()); // eslint-disable-line
-      break;
-    }
-    case "list": {
-      const [validators, validatorCount] = await inner.getValidators();
-      console.log(validators.slice(0, validatorCount).join("\n")); // eslint-disable-line
       break;
     }
     default:
@@ -45,9 +39,8 @@ const handleValidator = async argv => {
 
   switch (argv.action) {
     case "list": {
-      const inner = await InnerSet.at(await outer.innerSet());
-      const [validators, validatorCount] = await inner.getValidators();
-      console.log(validators.slice(0, validatorCount).join("\n")); // eslint-disable-line
+      const validators = await outer.getValidators();
+      console.log(validators.join("\n")); // eslint-disable-line
       break;
     }
     case "propose": {
@@ -122,6 +115,10 @@ module.exports = async function cli(cb) {
               default: [],
               type: "array",
               string: true
+            })
+            .option("copy", {
+              describe:
+                "copies existing validator set into new InnerSet, overrides `validators` option"
             });
         },
         handler: handleInner
