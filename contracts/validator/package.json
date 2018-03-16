@@ -9,6 +9,7 @@
     "lint:sol": "solium -d contracts/",
     "eslint": "eslint . --ext .js --ext .jsx",
     "generate:genesis": "truffle exec scripts/genesis/generate.js",
+    "cli": "truffle exec scripts/cli/index.js",
     "test": "truffle test --network development",
     "test:ci": "truffle test --network docker_ci"
   },
