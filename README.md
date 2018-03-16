@@ -88,27 +88,71 @@ To find out more about generating the "enode" IDs, you can refer to
 
 ## Post setup tasks
 
-### Replace `InnerSet` contract
+In the `contracts/validator` directory, a CLI tool is included to automate some of the post
+setup tasks that might encounter.
+
+In order to run the CLI, you might have to configure the Ethereum network the CLI will connect to.
+By default, the CLI will try to connect to an Ethereum JSON RPC on the localhost. You can find out
+more information on network configuration
+[here](http://truffleframework.com/docs/advanced/configuration).
+
+### Upgrade validator `InnerSet` contract
+
+As described above, the validator contracts are setup with an upgradeable facade. The initial
+contract deployed with the Genesis block simply takes a fixed list of validators. In order to
+support adding new validators or removing validators due to misbehaviour, we will need to upgrade
+the contract.
+
+This repository contains a contract implementation that can be used. For example, to upgrade the
+initial InnerSet contract, we can do:
+
+```bash
+yarn --silent \
+    cli inner deploy \
+    --outerset 0x0000000000000000000000000000000000000005
+```
 
 ### Adding a new validator node
 
-First, you would have to setup a new authority node as if it was an initial authority node, except
-you don't add its address into the `InnerSetInitial` contract.
+Before you can add a new Validator node, you will have to upgrade the `InnerSet` contract as
+described above.
 
-Then, make sure you have deployed a new `InnerSet` contract that supports adding new validators.
-The example here will demonstrate using the `InnerMajoritySet` contract.
+Then, you will need to do the following:
 
-- Unlock the account for a validator (for some reason `truffle console` doesn't work?)
-- Using truffle console, do something like
+- Create an Ethereum keypair (account) for the new validator. Make sure you have setup a new Parity client with the appropriate configuration and to use the same chain specification. The configuration can be the same as the one used for your existing validators.
+- Use an existing validator to propose a new validator
+- Use the other validators to vote to add support to the new validator. The current implementation requires at least a 50% vote.
 
-```javascript
-InnerMajoritySet.deployed()
-    .then(instance => instance.addSupport("0x"))
+You can propose a new validator with
+
+```bash
+yarn --silent \
+    cli validator propose 0x0 \
+    --outerset 0x0000000000000000000000000000000000000005
 ```
 
-Do this for the number of validators needed for the vote to pass.
+Then, you can add support to the pending validator with
+
+```bash
+yarn --silent \
+    cli validator addsupport 0x0 \
+    --outerset 0x0000000000000000000000000000000000000005
+```
+
+You can check current number of support for a validator with
+
+```bash
+yarn --silent \
+    cli validator getsupport 0x0 \
+    --outerset 0x0000000000000000000000000000000000000005
+```
 
 ### Adding a new observer node
+
+Setting up a new observer node is simply a matter of:
+
+- Configuring and running a new parity client. The same configuration for existing clients can be used.
+- Reusing the existing chain specification
 
 ## Future Work
 
